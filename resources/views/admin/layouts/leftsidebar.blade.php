@@ -24,41 +24,26 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-{{--
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#managerProduct"
-            aria-expanded="true" aria-controls="managerProduct">
-            <i class="fas fa-people-carry"></i>
-            <span>Quản lý Menu</span>
-        </a>
-        <div id="managerProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#managerProduct">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('create.product') }}">Thêm món ăn</a>
-                <a class="collapse-item" href="{{ route('index.product') }}">Danh sách món ăn</a>
-                <a class="collapse-item" href="{{ route('index.category') }}">Danh mục món ăn</a>
-            </div>
-        </div>
-    </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#managerOrder"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#managerTour"
             aria-expanded="true" aria-controls="managerOrder">
             <i class="fas fa-people-carry"></i>
-            <span>Quản lý đơn hàng</span>
+            <span>Quản lý tour</span>
         </a>
-        <div id="managerOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#managerOrder">
+        <div id="managerTour" class="collapse" aria-labelledby="headingTwo" data-parent="#managerTour">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('create.order') }}">Thêm đơn hàng</a>
-                <a class="collapse-item" href="{{ route('index.order', ['status' => 0]) }}">Danh sách chưa xử lý</a>
-                <a class="collapse-item" href="{{ route('index.order', ['status' => 1]) }}">Danh sách đang xử lý</a>
-                <a class="collapse-item" href="{{ route('index.order', ['status' => 2]) }}">Danh sách hoàn thành</a>
+                <a class="collapse-item" href="{{ route('admin.tour.create') }}">Thêm tour</a>
+                <a class="collapse-item" href="{{ route('admin.tour.index') }}">Danh sách tour</a>
+                <a class="collapse-item" href="{{ route('admin.tour.place.index', ['type' => 0]) }}">Nơi khởi hành</a>
+                <a class="collapse-item" href="{{ route('admin.tour.place.index', ['type' => 1]) }}">Nơi đến</a>
+                <a class="collapse-item" href="{{ route('admin.category.tour.index') }}">Danh mục</a>
             </div>
         </div>
     </li>
+    {{--
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

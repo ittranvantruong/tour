@@ -190,10 +190,7 @@ $(document).on('click', '.delete-image-ckfinder', function (e) {
         flag = true;
     deleteItemGallery(that, input);
     if (route != 0 && route != null) {
-        flag = delete_attribute_variation(route);
-    }
-    if (flag) {
-        that.parent().remove();
+        flag = deleteItemGalleryData(that, route);
     }
 });
 
@@ -211,18 +208,16 @@ function deleteItemGallery(that, input) {
         url_file = url_file.slice(0, -1);
     }
     input.val(url_file);
-
+    that.parent().remove();
 }
 
-function deleteItemGalleryData(that, route, input) {
-    var token = $('meta[name="csrf-token"]').attr('content'),
-        gallery = input.val();
+function deleteItemGalleryData(that, route) {
+    var token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: "DELETE",
         url: route,
         data: {
-            _token: token,
-            gallery: gallery
+            _token: token
         },
     }).done(function () {
         that.parent().remove();

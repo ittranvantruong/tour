@@ -15,7 +15,8 @@ class CreateToursTable extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
+            $table->string('code')->nullable();
+            $table->integer('group_id')->nullable();
             $table->integer('category_id')->nullable();
             $table->string('title');
             $table->string('slug')->unique();

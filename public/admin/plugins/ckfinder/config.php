@@ -20,7 +20,7 @@ function url(){
     else{
         $protocol = 'http';
     }
-    return $protocol . "://" . $_SERVER['HTTP_HOST'].'/menudientu';
+    return $protocol . "://" . $_SERVER['HTTP_HOST'].'/tour';
 }
 
 // Development

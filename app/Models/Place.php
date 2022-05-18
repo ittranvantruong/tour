@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Admin\Traits\Slug;
 use Illuminate\Support\Facades\Cache;
 
-class CategoryTour extends Model
+class Place extends Model
 {
     use HasFactory, Slug;
+    protected $table = 'places';
 
-    protected $table = 'category_tour';
-
-    protected $fillable = ['title', 'slug', 'status', 'sort', 'type'];
+    protected $fillable = ['group', 'type', 'title', 'slug', 'status', 'sort'];
 
     public static function boot()
     {
@@ -25,10 +24,5 @@ class CategoryTour extends Model
         static::saved(function () {
 			Cache::flush();
 		 });
-    }
-
-    public function tour()
-    {
-        return $this->hasMany(Tour::class, 'category_id', 'id');
     }
 }
