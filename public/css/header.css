@@ -1,0 +1,251 @@
+html, body {width: auto!important; overflow-x: hidden!important} 
+
+@media (min-width: 768px) {
+    .container {
+        width: 1240px;
+    }
+
+    #header_main_mobi {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #header_main_desktop, #header_bottom {
+        display: none;
+    }
+}
+
+#header_top {
+    background: #f1b614 !important;
+}
+
+#header_top li {
+    list-style: none;
+    float: left;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#header_top li:hover {
+    background: #f9db17;
+}
+
+#header_top li a {
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-decoration: none;
+    border-right: 1px solid white;
+}
+
+.search_form {
+    height: 100%;
+    margin: 0;
+    position: relative;
+    padding: 0px 0px;
+    margin: 3px 0px;
+}
+
+.search_form button {
+    color: #fff; 
+    position: absolute; 
+    right: 0; 
+    text-align: center; 
+    border: 1px solid #fff; 
+    height: 40px; 
+    background: #d69418 !important; 
+    border-radius: 0; 
+    top: 0;
+}
+
+.search_form input {
+    margin: 0;
+    background-color: transparent;
+    color: #fff;
+    width: 100%;
+    font-size: 12px;
+    border: 1px solid #fff;
+    height: 40px;
+    border-radius: 0;
+    padding: 0 44px 0 10px;
+}
+
+.search_form input::placeholder{
+    color: white !important;
+}
+
+.search_form .form-control:focus {
+    border-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
+input::focus{
+    color: black !important;
+}
+
+/* ----------------------- Sidebar mobi -----------------------*/
+#header_main_mobi nav {
+    background: black;
+    bottom: 0;
+    box-shadow: 0 0 5px black;
+    height: 100%;
+    left: -17.5rem;
+    padding-top: 38px;
+    position: absolute;
+    top: 0;
+    transition: .5s ease-in-out;
+    width: 17rem;
+    user-select: none;
+}
+  
+#header_main_mobi nav a {
+    color: #eee;
+    display: block;
+    padding: 12px 16px;
+    transition: .5s;
+    text-decoration: none;
+    -webkit-user-drag: none;
+}
+  
+#header_main_mobi #nav-collapse {
+    padding: 8px 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+  
+#header_main_mobi #nav-expand:focus {
+    opacity: 0;
+}
+  
+#header_main_mobi #nav-expand:focus ~ main {
+    margin-left: 17rem;
+    transition-delay: .25s;
+}
+  
+#header_main_mobi #nav-expand:focus ~ nav {
+    left: 0;
+    transition-delay: .25s;
+}
+  
+#header_main_mobi #nav-expand:hover {
+    background-color: black;
+    color: #fff;
+}
+
+#header_main_mobi i {
+    color: black;
+}
+/* ----------------------- End Sidebar mobi ----------------------- */
+
+#header_bottom li {
+    list-style: none;
+    float: left;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#header_bottom li:hover {
+    background: #f1b614;
+}
+
+#header_bottom li:hover a{
+    color: white;
+}
+
+#header_bottom li a {
+    color: black;
+    padding: 5px 15px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+#menu {
+    list-style: none;
+}
+
+#menu li {
+    text-align: left;
+}
+
+#menu li a {
+    text-decoration: none;
+}
+
+#menu > li {
+    float: left;
+    position: relative;
+}
+
+  #menu > li > ul.dropdown_menu {
+    position: absolute;
+    list-style: none;
+    display: none;
+    width: 200px;
+    background: white;
+    padding: 0;
+  }
+
+  #menu > li:hover > a {
+
+  }
+
+  #menu > li:hover > ul.dropdown_menu {
+    z-index: 100;
+  }
+  ul.dropdown_menu > li {
+    position: relative;
+    color: #000;
+  }
+  ul.dropdown_menu > li > ul.submenu {
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    left: 200px;
+  }
+  ul.dropdown_menu > li:hover > a {
+    color: #000;
+      
+  }
+  ul.dropdown_menu > li:hover > ul.submenu {
+    z-index: 100;
+  }
+  ul.submenu > li:hover > a {
+      
+  }
+  .arrow {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+  .arrow-down {
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #fff;
+  }
+
+.arrow-right {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid #fff;
+}
+
+#header_bottom #menu .dropdown_menu li{
+    padding: 10px;
+    width: 100%;
+}
+
+#header_bottom #menu .dropdown_menu li a{
+    color: black;
+    padding: 0px;
+    margin: 0px;
+}
