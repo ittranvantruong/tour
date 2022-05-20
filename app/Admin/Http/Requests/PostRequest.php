@@ -48,7 +48,7 @@ class PostRequest extends FormRequest
    {
        return [
            'title.required' => 'Tiêu đề không được bỏ trống',
-           'category_id.required' => 'Danh mục sản phẩm không được bỏ trống',
+           'category_id.required' => 'Danh mục không được bỏ trống',
        ];
    }
 

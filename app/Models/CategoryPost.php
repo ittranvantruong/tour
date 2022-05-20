@@ -27,4 +27,8 @@ class CategoryPost extends Model
             ]
         ];
     }
+
+    public function posts(){
+        return $this->hasMany(Posts::class, 'category_id', 'id');
+    }
 }

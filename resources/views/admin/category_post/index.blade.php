@@ -35,7 +35,7 @@
                                                     <small>({{ $item->slug }})</small>
                                                 </div>
                                                 <div class="d-flex align-items-center sortable-tool"><small>Số bài viết:
-                                                        0</small><a role="button" class="text-light" href="{{route('admin.danh-muc-bai-viet.edit', $item->id)}}"><i
+                                                        {{$item->posts->count()}}</small><a role="button" class="text-light" href="{{route('admin.danh-muc-bai-viet.edit', $item->id)}}"><i
                                                             class="fas fa-edit"></i></a> <span role="button"
                                                         class="sortable-delete"
                                                         data-url="{{ route('admin.danh-muc-bai-viet.destroy', $item->id) }}"><i

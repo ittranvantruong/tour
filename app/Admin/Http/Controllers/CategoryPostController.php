@@ -16,7 +16,7 @@ class CategoryPostController extends Controller
      */
     public function index()
     {
-        $category_posts = CategoryPost::orderBy('sort','asc')->get();
+        $category_posts = CategoryPost::with('posts')->orderBy('sort','asc')->get();
         return view('admin.category_post.index', compact('category_posts'));
     }
 
