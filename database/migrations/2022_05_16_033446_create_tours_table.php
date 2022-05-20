@@ -14,8 +14,9 @@ class CreateToursTable extends Migration
     public function up()
     {
         Schema::create('tours', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('code');
+            $table->integer('id')->autoIncrement();
+            $table->string('code')->nullable();
+            $table->integer('group_id')->nullable();
             $table->integer('category_id')->nullable();
             $table->string('title');
             $table->string('slug')->unique();
@@ -31,7 +32,9 @@ class CreateToursTable extends Migration
             $table->boolean('is_promotion')->default(false);
             $table->timestamps();
 
-            // $table->foreign('category_id')->references('id')->on('category_tour')->onUpdate('NO ACTION')->onDelete('SET NULL');
+            $table->foreign('category_id')->references('id')->on('category_tour')->onUpdate('NO ACTION')->onDelete('SET NULL');
+
+            $table->foreign('place_from')->references('id')->on('places')->onUpdate('NO ACTION')->onDelete('SET NULL');
 
         });
     }

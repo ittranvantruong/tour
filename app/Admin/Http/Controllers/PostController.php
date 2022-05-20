@@ -17,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Posts::with('category')->latest()->get();
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -39,8 +40,9 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = Posts::create($request->only('title', 'content','avatar', 'category_id'));
+        $post = Posts::create($request->only('title','avatar', 'category_id'));
         $post->status = formatStatusButton($request->status);
+        $post->content = $request->post_content;
         $post->save();
         return back()->with('success', 'Thêm bài viết thành công');
     }
@@ -64,7 +66,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Posts::find($id);
+        $category_posts = CategoryPost::orderBy('sort', 'asc')->get();
+        return view('admin.post.edit', compact('category_posts','post'));
     }
 
     /**
@@ -76,7 +80,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post= Posts::find($id);
+        $post->update($request->only('title','avatar', 'category_id'));
+        $post->content = $request->post_content;
+        $post->status = formatStatusButton($request->status);
+        $post->save();
+        return back()->with('success', 'Sửa bài viết thành công');
     }
 
     /**
@@ -87,6 +96,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Posts::find($id)->delete();
+        return back()->with('success', 'Xóa bài viết thành công');
+
     }
 }

@@ -17,8 +17,10 @@
             <div class="row">
                 <div class="col-12 col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>Danh mục bài viết</h4>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="font-weight-bold text-primary mb-0">Danh mục bài viết</h6>
+                            <a href="{{ route('admin.danh-muc-bai-viet.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-plus-circle fa-sm text-white-50"></i> Thêm danh mục bài viết</a>
                         </div>
                         <div class="card-body">
                             <div class="row">

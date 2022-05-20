@@ -50,10 +50,9 @@ $(document).on('click', '.edit-load', function () {
         success: function (response) {
             // console.log($(element).find('img.show-avatar-user-secondary').attr('src'));
             $(element+' input[name="id"]').val(response.id);
-            $(element+' input[name="name"]').val(response.name);
+            $(element+' input[name="title"]').val(response.title);
             $(element+' select[name="status"] option[value="'+response.status+'"]').prop('selected', true);
             $(element+' input[name="sort"]').val(response.sort);
-            $(element+' input[name="type"]').prop('checked', response.type);
             $(modal).modal('show');
         },
         error: function () {
@@ -115,7 +114,7 @@ $(document).on('click', '.delete', function (e) {
     }).done(function(response) {
         that.parents('tr').remove();
         $.toast({
-            heading: 'Thất bại',
+            heading: 'Thành công',
             text: response.message,
             position: 'top-right',
             icon: 'success', 

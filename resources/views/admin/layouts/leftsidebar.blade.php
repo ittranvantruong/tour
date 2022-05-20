@@ -24,16 +24,36 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+  
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#managerTour"
+            aria-expanded="true" aria-controls="managerOrder">
+            <i class="fas fa-people-carry"></i>
+            <span>Quản lý tour</span>
+        </a>
+        <div id="managerTour" class="collapse" aria-labelledby="headingTwo" data-parent="#managerTour">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.tour.create') }}">Thêm tour</a>
+                <a class="collapse-item" href="{{ route('admin.tour.index') }}">Danh sách tour</a>
+                <a class="collapse-item" href="{{ route('admin.tour.place.index', ['type' => 0]) }}">Nơi khởi hành</a>
+                <a class="collapse-item" href="{{ route('admin.tour.place.index', ['type' => 1]) }}">Nơi đến</a>
+                <a class="collapse-item" href="{{ route('admin.category.tour.index') }}">Danh mục</a>
+            </div>
+        </div>
+    </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuBlogCategory"
             aria-expanded="true" aria-controls="menuBlogCategory">
             <i class="fas fa-people-carry"></i>
-            <span>Danh mục bài viết</span>
+            <span>Quản lý bài viết</span>
         </a>
         <div id="menuBlogCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#menuBlogCategory">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('admin.bai-viet.index')}}">Tất cả bài viết</a>
+                <a class="collapse-item" href="{{route('admin.bai-viet.create')}}">Thêm bài viết mới</a>
                 <a class="collapse-item" href="{{route('admin.danh-muc-bai-viet.index')}}">Tất cả danh mục</a>
                 <a class="collapse-item" href="{{route('admin.danh-muc-bai-viet.create')}}">Thêm danh mục mới</a>
+                
             </div>
         </div>
     </li>
@@ -58,20 +78,23 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#managerOrder"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#managerTour"
             aria-expanded="true" aria-controls="managerOrder">
             <i class="fas fa-people-carry"></i>
-            <span>Quản lý đơn hàng</span>
+            <span>Quản lý tour</span>
         </a>
-        <div id="managerOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#managerOrder">
+        <div id="managerTour" class="collapse" aria-labelledby="headingTwo" data-parent="#managerTour">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('create.order') }}">Thêm đơn hàng</a>
-                <a class="collapse-item" href="{{ route('index.order', ['status' => 0]) }}">Danh sách chưa xử lý</a>
-                <a class="collapse-item" href="{{ route('index.order', ['status' => 1]) }}">Danh sách đang xử lý</a>
-                <a class="collapse-item" href="{{ route('index.order', ['status' => 2]) }}">Danh sách hoàn thành</a>
+                <a class="collapse-item" href="{{ route('admin.tour.create') }}">Thêm tour</a>
+                <a class="collapse-item" href="{{ route('admin.tour.index') }}">Danh sách tour</a>
+                <a class="collapse-item" href="{{ route('admin.tour.place.index', ['type' => 0]) }}">Nơi khởi hành</a>
+                <a class="collapse-item" href="{{ route('admin.tour.place.index', ['type' => 1]) }}">Nơi đến</a>
+                <a class="collapse-item" href="{{ route('admin.category.tour.index') }}">Danh mục</a>
             </div>
         </div>
     </li>
+    {{--
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

@@ -14,7 +14,7 @@ class CreateCategoryPostTable extends Migration
     public function up()
     {
         Schema::create('category_post', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->autoIncrement();
             $table->string('title');
             $table->string('slug');
             $table->string('sort')->default(0);

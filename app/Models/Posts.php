@@ -27,4 +27,8 @@ class Posts extends Model
             ]
         ];
     }
+
+    public function category(){
+        return $this->belongsTo(CategoryPost::class, 'category_id', 'id');
+    }
 }

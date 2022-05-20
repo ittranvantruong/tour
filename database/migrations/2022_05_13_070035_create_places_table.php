@@ -14,7 +14,8 @@ class CreatePlacesTable extends Migration
     public function up()
     {
         Schema::create('places', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->autoIncrement();
+
             $table->integer('group');
             $table->integer('type')->default(0);
             $table->string('title');

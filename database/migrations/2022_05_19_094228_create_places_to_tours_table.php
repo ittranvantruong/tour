@@ -18,8 +18,8 @@ class CreatePlacesToToursTable extends Migration
             $table->integer('tour_id');
             $table->timestamps();
 
-            // $table->foreign('place_id')->references('id')->on('places')->onUpdate('NO ACTION')->onDelete('CASCADE');
-            // $table->foreign('tour_id')->references('id')->on('tours')->onUpdate('NO ACTION')->onDelete('CASCADE');
+            $table->foreign('place_id')->references('id')->on('places')->onUpdate('NO ACTION')->onDelete('CASCADE');
+            $table->foreign('tour_id')->references('id')->on('tours')->onUpdate('NO ACTION')->onDelete('CASCADE');
         });
     }
 

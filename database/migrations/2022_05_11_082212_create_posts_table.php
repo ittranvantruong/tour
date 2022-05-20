@@ -14,8 +14,8 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('category_id');
+            $table->integer('id')->autoIncrement();
+            $table->integer('category_id')->nullable();
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('avatar')->nullable();
@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->boolean('status')->default(0);
             $table->timestamps();
 
-            // $table->foreign('category_id')->references('id')->on('category_post')->onUpdate('NO ACTION')->onDelete('SET NULL');
+            $table->foreign('category_id')->references('id')->on('category_post')->onUpdate('NO ACTION')->onDelete('SET NULL');
         });
     }
 

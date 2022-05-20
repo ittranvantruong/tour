@@ -14,7 +14,7 @@ class CreateCategoryTourTable extends Migration
     public function up()
     {
         Schema::create('category_tour', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->autoIncrement();
             $table->string('title');
             $table->string('slug')->unique();
             $table->integer('sort')->default(0);
