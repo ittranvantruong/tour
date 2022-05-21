@@ -111,7 +111,7 @@
                         <div class="tab-pane fade show active" id="tab-{{ $group[0]['slug'] }}">
                             @include('public.tour.partials.entry-tour', ['data' => $tour_domestic])
                         </div>
-                        <div class="tab-pane fade show active" id="tab-{{ $group[1]['slug'] }}">
+                        <div class="tab-pane fade show" id="tab-{{ $group[1]['slug'] }}">
                             @include('public.tour.partials.entry-tour', ['data' => $tour_abroad])
                         </div>
                         <div class="tab-pane fade" id="tabTourSale">

@@ -24,5 +24,8 @@ return [
             0 => 'Nơi Khởi hành', 
             1 => 'Nơi đến'
         ]
+    ], 
+    'post' => [
+        'category_home' => 2
     ]
 ];

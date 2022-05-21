@@ -158,7 +158,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <input type="text" class="d-none" name="gallery" value="">
+                            <input type="text" class="d-none" name="gallery" value="{{ $gallery }}">
                             <div id="galleryPreview" class="row">
                                 @foreach ($tour->file as $item)
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">

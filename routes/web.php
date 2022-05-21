@@ -37,9 +37,9 @@ Route::group(['prefix' => 'danh-muc', 'as' => 'category.'], function () {
     Route::get('{slug}', [CategoryTourController::class, 'show'])->name('show');
 });
 
-Route::group(['prefix' => 'tour', 'as' => 'tour.'], function () {
+Route::group(['prefix' => 'du-lich', 'as' => 'tour.'], function () {
     Route::get('loai-tour', [TourController::class, 'index'])->name('index');
-    Route::get('{tour:slug}', [TourController::class, 'show'])->name('show');
+    Route::get('{slug}', [TourController::class, 'show'])->name('show');
 });
 
 Route::group([ 'prefix' => 'tin-tuc', 'as' => 'post.'], function () {

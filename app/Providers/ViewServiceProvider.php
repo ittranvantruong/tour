@@ -5,7 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\View\Composers\MenuComposer;
-use App\View\Composers\SideBarComposer;
+use App\View\Composers\SidebarComposer;
+use App\View\Composers\SidebarHomeComposer;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -28,7 +29,8 @@ class ViewServiceProvider extends ServiceProvider
     {
         //
         View::composer('public.layouts.menu', MenuComposer::class);
-        View::composer('public.tour.sidebar', SideBarComposer::class);
+        View::composer('public.tour.sidebar', SidebarComposer::class);
+        View::composer('public.sidebar', SidebarHomeComposer::class);
 
     }
 }

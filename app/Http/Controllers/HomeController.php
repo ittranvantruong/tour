@@ -20,6 +20,8 @@ class HomeController extends Controller
             ->whereStatus(1)->limit(200)->get();
         });
 
+        
+
         //tour trong nước
         $tour_domestic = $tour->whereIn('group_id', 0);
         //tour ngoài nước

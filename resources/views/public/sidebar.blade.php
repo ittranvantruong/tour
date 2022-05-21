@@ -7,41 +7,32 @@
     <div id="box_main_side">
         <div class="side_box_title text-uppercase">Cẩm nang du lịch</div>
         <div class="content_box_title">
+            @foreach($posts as $item)
+            @if($loop->first)
             <div class="box_blog_text">
                 <a href="#">
-                    <img src="./img/banner.jpeg" width="100%" height="160px">
+                    <img src="{{ asset($item->avatar) }}" width="100%" height="160px">
                     <div class="bottom-left">
-                        <span class="fw-bold">Những địa điểm du lịch Đà Nẵng hấp dẫn nhất</span>
-                        <br>28/08/2019
+                        <span class="fw-bold">{{ $item->title }}</span>
+                        <br>{{ date('d/m/Y', strtotime($item->created_at)) }}
                     </div>
                 </a>
             </div>
-
+            @else
             <p class="m-2"> </p>
             <a href="#" style="text-decoration: none;">
                 <div class="row box_blog_img_left">
                     <div class="col-4">
-                        <img src="./img/banner.jpeg" width="100%" height="50px">
+                        <img src="{{ asset($item->avatar) }}" width="100%" height="50px">
                     </div>
                     <div class="col-8 ps-0">
-                        <p class="m-0 fw-bold">Điểm du lịch Đà Lạt gắn với lịch sử văn hóa tâm linh</p>
-                        <p class="m-0">28/08/2019</p>
+                        <p class="m-0 fw-bold">{{ $item->title }}</p>
+                        <p class="m-0">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                     </div>
                 </div>
             </a>
-
-            <p class="m-2"> </p>
-            <a href="#" style="text-decoration: none;">
-                <div class="row box_blog_img_left">
-                    <div class="col-4">
-                        <img src="./img/banner.jpeg" width="100%" height="50px">
-                    </div>
-                    <div class="col-8 ps-0">
-                        <p class="m-0 fw-bold">Điểm du lịch Đà Lạt gắn với lịch sử văn hóa tâm linh</p>
-                        <p class="m-0">28/08/2019</p>
-                    </div>
-                </div>
-            </a>
+            @endif
+            @endforeach
         </div>
     </div>
     <!-- Văn hóa, ẩm thực tabs -->
@@ -49,44 +40,20 @@
     <div id="box_main_side">
         <div class="side_box_title text-uppercase">Văn hóa, ẩm thực</div>
         <div class="content_box_title">
+        @foreach($post_category as $item)
             <a href="#" style="text-decoration: none;">
                 <div class="row box_blog_img_left">
                     <div class="col-4">
-                        <img src="./img/banner.jpeg" width="100%" height="50px">
+                        <img src="{{ asset($item->avatar) }}" width="100%" height="50px">
                     </div>
                     <div class="col-8 ps-0">
-                        <p class="m-0 fw-bold">Điểm du lịch Đà Lạt gắn với lịch sử văn hóa tâm linh</p>
-                        <p class="m-0">28/08/2019</p>
+                        <p class="m-0 fw-bold">{{ $item->title }}</p>
+                        <p class="m-0">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                     </div>
                 </div>
             </a>
             <p class="m-2"> </p>
-
-            <a href="#" style="text-decoration: none;">
-                <div class="row box_blog_img_left">
-                    <div class="col-4">
-                        <img src="./img/banner.jpeg" width="100%" height="50px">
-                    </div>
-                    <div class="col-8 ps-0">
-                        <p class="m-0 fw-bold">Điểm du lịch Đà Lạt gắn với lịch sử văn hóa tâm linh</p>
-                        <p class="m-0">28/08/2019</p>
-                    </div>
-                </div>
-            </a>
-            <p class="m-2"> </p>
-
-            <a href="#" style="text-decoration: none;">
-                <div class="row box_blog_img_left">
-                    <div class="col-4">
-                        <img src="./img/banner.jpeg" width="100%" height="50px">
-                    </div>
-                    <div class="col-8 ps-0">
-                        <p class="m-0 fw-bold">Điểm du lịch Đà Lạt gắn với lịch sử văn hóa tâm linh</p>
-                        <p class="m-0">28/08/2019</p>
-                    </div>
-                </div>
-            </a>
-            <p class="m-2"> </p>
+        @endforeach
         </div>
     </div>
 
@@ -94,7 +61,11 @@
     <div class="pb-2"></div>
     <div id="box_main_side">
         <div class="side_box_title">KHỞI HÀNH TỪ</div>
-        <div class="content_box_title">TP. HCM</div>
+        @foreach($place_from as $item)
+        <div class="content_box_title">
+            <a href="{{ route('search.index', ['sel_place_from' => $item->id]) }}">{{ $item->title }}</a>
+        </div>
+        @endforeach
     </div>
 </div>
 <!-- button toggle sidebar -->

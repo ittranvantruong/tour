@@ -29,11 +29,9 @@
             <h4>Tour khuyến mãi</h4>
         </div>
         <div class="widget_content">
-            <div class="product_single">
-                <div class="product_single_inner">
-                    @include('public.tour.partials.entry-tour-vetical', ['data' => $tour_sale])
-                </div>
-            </div>
+
+            @include('public.tour.partials.entry-tour-vetical', ['data' => $tour_sale])
+
         </div>
     </div>
     <!---------------------->
@@ -65,36 +63,9 @@
             <h4>Tour vừa xem</h4>
         </div>
         <div class="widget_content">
-            <div class="product_single">
-                <div class="product_single_inner">
-                    <a class="row" href="#">
-                        <div class="col-4 product_avt">
-                            <img src="image/ly-son.jpg" alt="">
-                        </div>
-                        <div class="col-8 product_text">
-                            <h3>LÝ SƠN 2N1Đ_KHỞI HÀNH HẰNG NGÀY</h3>
-                            <div class="amount">
-                                <span>5.690.000₫</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="product_single">
-                <div class="product_single_inner">
-                    <a class="row" href="#">
-                        <div class="col-4 product_avt">
-                            <img src="image/goi-ca-trich.jpg" alt="">
-                        </div>
-                        <div class="col-8 product_text">
-                            <h3>PHÚ QUỐC 3N2Đ - KHỞI HÀNH ĐỊNH KỲ</h3>
-                            <div class="amount">
-                                <span>5.690.000₫</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+
+            @include('public.tour.partials.entry-tour-vetical', ['data' => session()->get('tour_watched', [])])
+
         </div>
     </div>
     <!---------------------->
