@@ -23,8 +23,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('public/sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/lib/jquery-toast-plugin/jquery.toast.min.css') }}" rel="stylesheet"
-        type="text/css">
+    <link href="{{ asset('public/lib/jquery-toast-plugin/jquery.toast.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/lib/Parsley.js-2.9.2/style.css') }}" rel="stylesheet">
     @stack('css')
 
@@ -32,11 +31,16 @@
 
     <script src="{{ asset('public/lib/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
     <script src="{{ asset('public/lib/Parsley.js-2.9.2/parsley.min.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
 </head>
 <style>
-    .close-jq-toast-single-custom{
+    .close-jq-toast-single-custom {
         position: unset !important;
     }
+
 </style>
 
 <body id="page-top">
