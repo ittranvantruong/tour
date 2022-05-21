@@ -8,28 +8,6 @@
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-6 col-md-2">
-                                        <img src="./img/banner.jpeg" class="rounded" width="100%">
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <img src="./img/banner.jpeg" class="rounded" width="100%">
-                                    </div>
-                                    <div class="col-2 display_none_mobi">
-                                        <img src="./img/banner.jpeg" class="rounded" width="100%">
-                                    </div>
-                                    <div class="col-2 display_none_mobi">
-                                        <img src="./img/banner.jpeg" class="rounded" width="100%">
-                                    </div>
-                                    <div class="col-2 display_none_mobi">
-                                        <img src="./img/banner.jpeg" class="rounded" width="100%">
-                                    </div>
-                                    <div class="col-2 display_none_mobi">
-                                        <img src="./img/banner.jpeg" class="rounded" width="100%">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-6 col-md-2">
                                         <img src="{{ asset('public/uploads/images/banner.jpeg') }}" class="rounded" width="100%">
                                     </div>
                                     <div class="col-6 col-md-2">

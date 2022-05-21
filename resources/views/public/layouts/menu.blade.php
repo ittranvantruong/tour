@@ -1,7 +1,5 @@
 <!-- Start header -->
 <header>
-    <button class="btn btn-warning p-1 btn_mo_tab_phu display_none_desktop" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#tab_phu_tren_main">></button>
     <section id="header_top">
         <div class="container clearfix">
             <div class="row">
@@ -9,20 +7,20 @@
                     <ul class="p-0">
                         <li><a href="#">TRANG CHỦ</a></li>
                         <li><a href="#">GIỚI THIỆU</a></li>
-                        <li><a href="#">TUYỂN DỤNG</a></li>
                         <li><a href="#">LIÊN HỆ</a></li>
-                        <li><a href="#">ĐĂNG NHẬP</a></li>
                         <li><a href="tel: 0123456789" style="border-right: none">HOTLINE: 0907 458 176 (MS VÀNG)</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-3">
-                    <div class="search_form">
-                        <input type="search" id="form1" class="form-control" placeholder="Tìm kiếm ..." />
-                        <button type="button" class="btn btn-primary">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <form action="{{ route('search.index') }}" method="get">
+                        <div class="search_form">
+                            <input type="search" id="form1" name="keyword" class="form-control" placeholder="Tìm kiếm ..." />
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -32,7 +30,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col col-3 text-center p-2">
-                    <img src="{{ asset(config('custom.images.logo')) }}" width="100%">
+                    <a href="{{ route('index') }}">
+                        <img src="{{ asset(config('custom.images.logo')) }}" width="100%">
+                    </a>
                 </div>
                 <div class="col col-9">
                     <img src="{{ asset('public/uploads/images/top_banner.jpeg') }}" width="100%">
@@ -48,23 +48,28 @@
                     <div class="col-12 col-md-12">
                         <ul class="p-0" id="menu">
                             <li>
-                                <a href="javascript:void(0)">
-                                    DL TRONG NƯỚC
+                                <a href="{{ route('group.show', $group[0]['slug']) }}">
+                                    {{ $group[0]['title'] }}
                                     <span class="arrow arrow-down"></span>
                                 </a>
                                 <ul class="dropdown_menu">
-                                    <li>
-                                        <a href="javascript:void(0)">Viet nam</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Thai lan</a>
-                                    </li>
+                                    @foreach($place_domestic as $item)
+                                    <li><a href="{{ route('place.show', $item->slug) }}">{{ $item->title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li><a href="#">DL Ngoài nước</a></li>
-                            <li><a href="#">Tour du thuyền</a></li>
-                            <li><a href="#">Các dịch vụ khác</a></li>
-                            <li><a href="#">Tour free & easy</a></li>
+                            <li>
+                                <a href="{{ route('group.show', $group[1]['slug']) }}">
+                                    {{ $group[1]['title'] }}
+                                    <span class="arrow arrow-down"></span>
+                                </a>
+                                <ul class="dropdown_menu">
+                                    @foreach($place_abroad as $item)
+                                    <li><a href="{{ route('place.show', $item->slug) }}">{{ $item->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li><a href="#">Cẩm nang</a></li>
                         </ul>
                     </div>
                 </div>
@@ -88,30 +93,44 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#acco_dl_trong_nuoc">
-                                            <a>DL Trong nước</a>
+                                            data-bs-toggle="collapse" data-bs-target="#{{ $group[0]['slug'] }}">
+                                            {{ $group[0]['title'] }}
                                         </button>
                                     </h2>
-                                    <div id="acco_dl_trong_nuoc" class="accordion-collapse collapse">
+                                    <div id="{{ $group[0]['slug'] }}" class="accordion-collapse collapse">
                                         <div class="accordion-body">
-                                            <p class="m-0"><a>Viet Nam 1</a></p>
-                                            <p class="m-0"><a>Viet Nam 2</a></p>
-                                            <p class="m-0"><a>Viet Nam 3</a></p>
-                                            <p class="m-0"><a>Viet Nam 4</a></p>
-                                            <p class="m-0"><a>Viet Nam 5</a></p>
+                                            @foreach($place_domestic as $item)
+                                            <p class="m-0"><a href="#">{{ $item->title }}</a></p>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </p>
-                            <p><a href="#">DL Ngoài nước</a></p>
-                            <p><a href="#">Tour du thuyền</a></p>
-                            <p><a href="#">Các dịch vụ khác</a></p>
-                            <p><a href="#">Tour free & easy</a></p>
+                            <p>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#{{ $group[1]['slug'] }}">
+                                            {{ $group[1]['title'] }}
+                                        </button>
+                                    </h2>
+                                    <div id="{{ $group[1]['slug'] }}" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            @foreach($place_abroad as $item)
+                                            <p class="m-0"><a href="#">{{ $item->title }}</a></p>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                            <p><a href="#">Cẩm nang</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="col col-4">
-                    <img src="{{ asset(config('custom.images.logo')) }}" width="100%">
+                    <a href="{{ route('index') }}">
+                        <img src="{{ asset(config('custom.images.logo')) }}" width="100%">
+                    </a>
                 </div>
             </div>
         </div>

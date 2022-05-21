@@ -8,11 +8,13 @@ return [
     'tour' => [
         'group' => [
             [
+                'id' => 0,
                 'title' => 'DL trong nước',
                 'slug' => 'du-lich-trong-nuoc',
                 'description' => 'Du lịch trong nước',
             ],
             [
+                'id' => 1,
                 'title' => 'DL ngoài nước',
                 'slug' => 'du-lich-ngoai-nuoc',
                 'description' => 'Du lịch ngoài nước',

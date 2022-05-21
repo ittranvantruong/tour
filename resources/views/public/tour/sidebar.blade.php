@@ -4,21 +4,18 @@
             <h4>Tìm kiếm</h4>
         </div>
         <div class="widget_content">
-            <form action="" method="">
-                <select name="nhomtour" class="form-control">
+            <form action="{{ route('search.index') }}" method="get">
+                <select name="sel_group_tour" class="form-control">
                     <option value="">--- Nhóm tour ---</option>
-                    <option value="1">Trong nước</option>
-                    <option value="2">Nước ngoài</option>
+                    @foreach($group as $key => $item)
+                    <option value="{{ $key }}">{{ $item['title'] }}</option>
+                    @endforeach
                 </select>
-                <select name="noikhoihanh" class="form-control">
+                <select name="sel_place_from_tour" class="form-control">
                     <option value="">--- Nơi khởi hành ---</option>
-                    <option value="1">Hồ Chí Minh</option>
                 </select>
-                <select name="noiden" class="form-control">
+                <select name="sel_place_to_tour" class="form-control">
                     <option value="">--- Nơi đến ---</option>
-                    <option value="1">Cù Lao Chàm</option>
-                    <option value="2">Đà Lạt</option>
-                    <option value="3">Đà Nẵng</option>
                 </select>
                 <div class="text-center">
                     <button type="submit">tìm kiếm</button>
@@ -34,17 +31,7 @@
         <div class="widget_content">
             <div class="product_single">
                 <div class="product_single_inner">
-                    <a class="row" href="#">
-                        <div class="col-4 product_avt">
-                            <img src="image/ly-son.jpg" alt="">
-                        </div>
-                        <div class="col-8 product_text">
-                            <h3>LÝ SƠN 2N1Đ_KHỞI HÀNH HẰNG NGÀY</h3>
-                            <div class="amount">
-                                <span>5.690.000₫</span>
-                            </div>
-                        </div>
-                    </a>
+                    @include('public.tour.partials.entry-tour-vetical', ['data' => $tour_sale])
                 </div>
             </div>
         </div>
@@ -123,3 +110,8 @@
 </a>
 <!-- overlay on sidebar open -->
 <div id="sidebar_overlay" class="toggled"></div>
+<script>
+    var routeRenderPlaceToGroup = "{{ route('ajax.get.place.to.group') }}", 
+    nameRenderPlaceFrom = 'Nơi khởi hành', nameRenderPlaceTo = 'Nơi đến';
+</script>
+<script src="{{ asset('public/js/search.js') }}"></script>
