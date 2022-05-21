@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use Illuminate\View\View;
 use App\Models\Tour;
+use App\Models\Posts;
 use Illuminate\Support\Facades\Cache;
 
 class SideBarComposer
@@ -43,6 +44,9 @@ class SideBarComposer
             ->limit(3)
             ->get();
         });
-        $view->with(['tour_sale' => $tour_sale, 'group' => $group]);
+        $posts = Cache::remember('post_sidebar', now()->minutes(60), function(){
+            return Posts::select('id', 'category_id', 'title', 'slug', 'avatar', 'created_at')->whereStatus(1)->limit(5)->get();
+        });
+        $view->with(['tour_sale' => $tour_sale, 'group' => $group, 'posts' => $posts]);
     }
 }

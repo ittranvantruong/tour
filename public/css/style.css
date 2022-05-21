@@ -138,6 +138,11 @@ a {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.box_blog_img_left {
+    font-size: 12px;
+    line-height: 15px;
+    color: black;
+}
 .pagination{
     justify-content: center;
 }

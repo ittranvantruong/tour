@@ -36,7 +36,7 @@ class SidebarHomeComposer
      */
     public function compose(View $view)
     {
-        $posts = Cache::remember('post_sidebar_home', now()->minutes(60), function(){
+        $posts = Cache::remember('post_sidebar', now()->minutes(60), function(){
             return Posts::select('id', 'category_id', 'title', 'slug', 'avatar', 'created_at')->whereStatus(1)->limit(5)->get();
         });
         $category_post = CategoryPost::select('id', 'title')->whereId(config('custom.post.category_home'))->first();

@@ -42,17 +42,20 @@
         <div class="widget_content">
             <div class="product_single">
                 <div class="product_single_inner">
-                    <a class="row" href="#">
-                        <div class="col-4 product_avt">
-                            <img src="image/ly-son.jpg" alt="">
-                        </div>
-                        <div class="col-8 product_text">
-                            <h3>LÝ SƠN 2N1Đ_KHỞI HÀNH HẰNG NGÀY</h3>
-                            <div class="amount">
-                                <span>5.690.000₫</span>
+                @foreach($posts as $item)
+                    <a href="#" style="text-decoration: none;">
+                        <div class="row box_blog_img_left">
+                            <div class="col-4">
+                                <img src="{{ asset($item->avatar) }}" width="100%" height="50px">
+                            </div>
+                            <div class="col-8 ps-0">
+                                <p class="m-0 fw-bold">{{ $item->title }}</p>
+                                <p class="m-0">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                             </div>
                         </div>
                     </a>
+                    <p class="m-2"> </p>
+                @endforeach
                 </div>
             </div>
         </div>
