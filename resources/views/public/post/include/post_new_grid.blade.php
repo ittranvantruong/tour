@@ -1,0 +1,22 @@
+<div class="post_single">
+    <div class="row">
+        <div class="col-4">
+            <div class="image-wrapper">
+                <a
+                    href="{{ route('post.show', ['category_slug' => $item->category->slug, 'post_slug' => $item->slug]) }}">
+
+                    <img src="{{ asset($item->avatar) }}" alt="{{ $item->title }}">
+                </a>
+            </div>
+        </div>
+        <div class="col-8 product_text">
+            <a href="{{ route('post.show', ['category_slug' => $item->category->slug, 'post_slug' => $item->slug]) }}">
+                <h3 class="post-new-title" title="{{ $item->title }}">{{ $item->title }}</h3>
+            </a>
+            {{-- <ul class="posted_at">
+                <li><i class="far fa-calendar-alt"></i> {{date('d/m/Y', strtotime($item->created_at))}}</li>
+                <li><i class="fas fa-comments"></i> 0</li>
+            </ul> --}}
+        </div>
+    </div>
+</div>

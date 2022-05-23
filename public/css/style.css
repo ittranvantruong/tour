@@ -1,0 +1,5 @@
+@media (min-width: 768px) {
+    .display_none_desktop {
+        display: none;
+    }
+}

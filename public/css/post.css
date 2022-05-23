@@ -1,0 +1,364 @@
+/* breadcrumb */
+
+.shop_breadcrumbs {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.category-menu li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.category-menu li a:hover {
+    color: #f1b614;
+}
+
+.category-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.image-wrapper {
+    position: relative;
+    padding-bottom: 65.2%;
+    border-radius: 15px;
+}
+
+.post_page_sidebar .post_single {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.widget .image-wrapper {
+    position: relative;
+    padding-bottom: 56.2%;
+    border-radius: 15px;
+}
+
+.image-wrapper img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.shop_breadcrumbs a {
+    color: #555 !important;
+}
+
+.shop_breadcrumbs .active {
+    color: #f1b614;
+}
+
+.shop_breadcrumbs a {
+    text-decoration: none;
+}
+
+.shop_breadcrumbs .breadcrumbs {
+    min-height: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.shop_breadcrumbs .breadcrumbs>li+li:before {
+    content: '>';
+    color: #555;
+    padding: 0 10px;
+}
+
+.shop_breadcrumbs .breadcrumbs>li+li {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.shop_breadcrumbs i {
+    padding-right: 8px;
+    font-size: 16px;
+}
+
+
+/* post */
+
+.post_single a {
+    text-decoration: none;
+}
+
+.post_single .posted_at {
+    color: #999;
+    font-size: 13px;
+    font-style: italic;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.show_posts .post_header .posted_at {
+    margin-bottom: 30px;
+}
+
+.post_single .posted_at>li+li:before {
+    content: '/';
+    padding: 0 10px;
+    opacity: 0.5;
+}
+
+.post_single .posted_at a {
+    color: red;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.post_single .posted_at a:hover {
+    color: #f1b614;
+}
+
+.show_posts .post_title h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.show_posts .cus_divider {
+    border-bottom: 2px solid #F5F5F5;
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+
+.show_posts .post_content h5 {
+    margin-bottom: 25px;
+}
+
+.show_posts .post_content p {
+    font-size: 15px;
+}
+
+.show_posts .likeshare_btn {
+    margin: 20px 0 30px;
+}
+
+.show_posts .likeshare_btn a {
+    background: rgb(24, 119, 242);
+    padding: 3px 10px;
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 11px;
+    border-radius: 4px;
+}
+
+.show_posts .likeshare_btn span {
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+.show_posts .back_next_post {
+    display: flex;
+    justify-content: space-between;
+}
+
+.show_posts .back_next_post a {
+    color: #f1b614;
+    font-size: 14px
+}
+
+.show_posts .back_next_post a:hover {
+    color: #f1b6149f;
+}
+
+
+/* related posts */
+
+.show_posts .related_posts .post_single {
+    margin-bottom: 30px;
+}
+
+.show_posts .related_posts .post_single:last-child {
+    margin-bottom: 0;
+}
+
+.show_posts .related_posts img {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.show_posts .related_posts .title h4 {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.show_posts .related_posts .post_avt img {
+    width: 90px;
+}
+
+.post-related-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 20px !important;
+    padding: 0;
+    max-height: 35px;
+    font-size: 13px;
+}
+
+.show_posts .related_posts .product_text {}
+
+.show_posts .related_posts h3 {
+    font-size: 13px;
+    color: #000;
+    font-weight: normal;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+
+/* bình luận */
+
+.show_posts .widget_post_comment .cus_field {
+    margin-bottom: 20px;
+}
+
+.show_posts .widget_post_comment label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.show_posts .widget_post_comment .form-control {
+    border-radius: 0;
+    border: 2px solid #DDD;
+    padding: 8px 14px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.show_posts .widget_post_comment button {
+    background-color: #f1b614;
+    padding: 0 22px;
+    font-size: 14px;
+    line-height: 40px;
+    border: none;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+    letter-spacing: 1px;
+}
+
+.show_posts .widget .widget_content {
+    padding-bottom: 30px;
+}
+
+.show_posts .widget .widget_title h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* sidebar */
+
+.post_page_sidebar .widget_title h4 {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.post_page_sidebar .widget_content {
+    padding-bottom: 15px;
+}
+
+.post_page_sidebar .widget_content img {
+    border-radius: 3px;
+    min-width: 50px;
+}
+
+.post_page_sidebar .widget_content .product_text {
+    padding-left: 10px;
+}
+
+.post_page_sidebar .widget_content .post_single h3 {
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #000;
+    line-height: 22px;
+}
+
+.post_page_sidebar .widget_content .post_single:hover h3 {
+    color: #f1b614;
+}
+
+.post_page_sidebar .post_single {}
+
+.post_page_sidebar .post_single:last-child {
+    margin: 0;
+}
+
+.post-new-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 18px !important;
+    padding: 0;
+    height: 35px;
+}
+
+@media (min-width: 767px) {
+    /* related posts */
+    .show_posts .related_posts .post_avt img {
+        width: 170px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* related posts */
+    .show_posts .related_posts .post_avt img {
+        width: 120px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #baiviet .container {
+        max-width: 1240px;
+    }
+    /* related posts */
+    .show_posts .related_posts .post_avt img {
+        width: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    #baiviet .container {
+        max-width: 100%;
+    }
+    .post_single h2 {
+        font-size: 20px;
+        margin-top: 15px;
+        line-height: 27px;
+    }
+}

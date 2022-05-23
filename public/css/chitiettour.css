@@ -1,0 +1,407 @@
+#chitiettour a{
+    color: #000;
+    text-decoration: none;
+}
+#chitiettour img{
+    width: 100%;
+}
+#chitiettour select{
+    font-size: 12px;
+    padding: 5px 10px;
+    height: auto;
+}
+/* breadcrumb */
+.shop_breadcrumbs{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.shop_breadcrumbs a{
+    color: #555 !important;
+}
+.shop_breadcrumbs .active {
+    color: #f1b614;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.shop_breadcrumbs .breadcrumbs{
+    min-height: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.shop_breadcrumbs .breadcrumbs>li+li:before {
+    content: '>';
+    color: #555;
+    padding: 0 10px;
+}
+.shop_breadcrumbs .breadcrumbs>li+li{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    vertical-align: top;
+}
+.shop_breadcrumbs i{
+    padding-right: 8px;
+    font-size: 16px;
+}
+
+/* hình ảnh chi tiết tour */
+    /* sale tag */
+.product_single .col-lg-6{
+    position: relative;
+}
+.product_single .sale_tag{
+    font-weight: 700;
+    position: absolute;
+    top: 20px;
+    right: 7px;
+    padding: 2px 20px;
+    background-color: #FF0B0B;
+    color: #FFF;
+    z-index: 5;
+    font-size: 16px;
+}
+.product_single .sale_tag:before{
+    content: '';
+    display: block;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #000000;
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+}
+#chitiettour .fotorama__fullscreen-icon{
+    left: 2px;
+    right: initial;
+}
+    /* thông tin tour */
+.product_single .name_tour h1{
+    font-size: 25px;
+}
+.product_single .amount{
+    font-size: 13px;
+    color: #888;
+}
+.product_single .amount span{
+    color: red;
+    font-weight: bold;
+}
+.products.product_single .amount{
+    font-size: 18px;
+}
+.products.product_single .amount span{
+    font-size: 24px;
+}
+/* nơi khởi hành - nơi đến */
+.product_single .thongtin_tour {
+    font-size: 13px;
+    color: #555;
+}
+.product_single .thongtin_tour a{
+    color: #f1b614 !important;
+}
+/* box liên hệ */
+.product_single .lienhe_box i{
+    background: rgba(0,0,0,0.1);
+    width: 40px;
+    height: 100%;
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product_single .lienhe_box i:after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    border-top: 40px solid rgba(0,0,0,0.1);
+    top: 0px;
+    border-right: 10px solid #f1b614;
+}
+.product_single .lienhe_box a{
+    background-color: #f1b614;
+    padding-left: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: center;
+}
+.product_single .lienhe_box>div:last-child a{
+    background-color: #c20f0f;
+}
+.product_single .lienhe_box>div:last-child i:after{
+    border-right-color: #c20f0f;
+}
+/* box tags */
+.product_single .tags_lienquan>div{
+    padding: 15px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+    border: 1px solid #ddd;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 30px;
+}
+.product_single .tags_lienquan a{
+    color: #fff !important;
+    margin-left: 12px;
+    padding: 0 5px;
+    border-radius: 4px;
+    position: relative;
+    background: #f1b614;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 18px;
+    z-index: 1;
+}
+.product_single .tags_lienquan a span{
+    display: block;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background: #f1b614;
+    width: 14px;
+    height: 14px;
+    left: -4px;
+    top: 2px;
+    border-radius: 4px;
+    z-index: -1;
+}
+.product_single .tags_lienquan a span:before{
+    display: block;
+    background: #fff;
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    left: 2px;
+    top: 8px;
+    position: absolute;
+}
+/* like & share fb */
+.product_single .likeshare_btn a{
+    background: rgb(24, 119, 242);
+    padding: 3px 10px;
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 11px;
+    border-radius: 4px;
+}
+
+/* nội dung mô tả tour (Tab content) */
+section.noidung{
+    padding: 50px 0;
+}
+
+    /* show tab on desktop */
+nav.show_on_desk .nav{
+    border: none;
+}
+nav.show_on_desk .nav-link{
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+}
+nav.show_on_desk .nav-link.active{
+    background: #f1b614;
+    color: #fff !important;
+    border: none;
+}
+
+    /* show tab on mobile */
+nav.hidden_on_desk{
+    padding: 0;
+    width: fit-content;
+}
+nav.hidden_on_desk .nav{
+    flex-direction: column;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.426);
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+nav.hidden_on_desk .nav .nav-link{
+    border-radius: 0;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 44px;
+}
+nav.hidden_on_desk .nav .nav-link.active{
+    border: 1px solid #f1b614;
+    color: #f1b614 !important;
+}
+.noidungtour .description_tab .dropdown{
+    background: #f1b614;
+    margin-bottom: 2px;
+}
+.noidungtour .description_tab .dropdown .dropdown-toggle::after{
+    transform: translateY(50%);
+}
+.noidungtour .description_tab .dropdown .dropdown-toggle{
+    padding-left: 15px;
+    line-height: 38px;
+    color: #fff !important;
+}
+    /* tab content */
+section.noidung .noidungtour .tab-content{
+    border: 1px solid #f1b614;
+    padding: 10px;
+}
+
+/* sidebar */
+.shop_sidebar .widget{
+    margin-bottom: 15px;
+}
+.shop_sidebar .widget_title{
+    padding-left: 10px;
+    background-color: #f1b614;
+    color: #fff;
+}
+.shop_sidebar .widget_title h4{
+    font-size: 15px;
+    line-height: 32px;
+    height: 32px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.shop_sidebar .widget_content{
+    padding: 10px;
+    border: 1px solid #cecece;
+    border-top: none;
+}
+.shop_sidebar .widget_content select{
+    margin-bottom: 10px;
+}
+.shop_sidebar .widget_content .text-center button{
+    background-color: #f1b614;
+    padding: 0 22px;
+    font-size: 14px;
+    height: 40px;
+    border: none;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.shop_sidebar .widget_content .product_single{
+    margin-bottom: 20px;
+}
+.shop_sidebar .widget_content .product_single:last-child{
+    margin: 0;
+}
+.shop_sidebar .widget_content .product_single .row{
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.shop_sidebar .widget_content .product_single .row>div{
+    padding: 0 5px;
+}
+.shop_sidebar .widget_content .product_single h3{
+    font-size: 14px;
+    line-height: 20px;
+    min-height: 40px;
+    margin: 0;
+}
+.shop_sidebar .widget_content .product_single img{
+    border-radius: 3px;
+}
+#chitiettour .sidebar_toggle_btn{
+    position: fixed;
+    left: 0px;
+    top: 40%;
+    font-size: 25px;
+    background: #f1b614;
+    color: #fff;
+    padding: 25px 0;
+    width: 25px;
+    z-index: 9;
+    text-align: center;
+    display: none;
+}
+#sidebar_overlay{
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: -1;
+    -webkit-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;
+}
+#sidebar_overlay.show{
+    opacity: 1;
+    z-index: 50;
+}
+.hiddenOverflow{
+    overflow: hidden;
+}
+.shop_sidebar .widget_content .product_single h3{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+@media (min-width: 1200px){
+    #chitiettour .container {
+        max-width: 1240px;
+    }
+}
+@media (max-width: 992px){
+    /* shop sidebar */
+    #chitiettour .shop_sidebar{
+        top: 0;
+        max-width: 270px;
+        position: fixed;
+        left: -500px;
+        height: 100%;
+        -webkit-transition: left .5s ease;
+        -o-transition: left .5s ease;
+        transition: left .5s ease;
+        z-index: 60;
+        background-color: #fff;
+        padding-top: 15px;
+        overflow-y: auto;
+    }
+    #chitiettour .shop_sidebar.show{
+        left: 0;
+    }
+    #chitiettour .sidebar_toggle_btn{
+        display: block;
+    }
+}
+@media (max-width: 768px){
+    #chitiettour .container {
+        max-width: 100%;
+    }
+    .product_single .lienhe_box>div:first-child{
+        margin-bottom: 10px;
+    }
+    /* nội dung mô tả tour (Tab content) */
+    section.noidung{
+        padding: 30px 0;
+    }
+}
