@@ -37,14 +37,17 @@ class SidebarHomeComposer
     public function compose(View $view)
     {
         $posts = Cache::remember('post_sidebar', now()->minutes(60), function(){
-            return Posts::select('id', 'category_id', 'title', 'slug', 'avatar', 'created_at')->whereStatus(1)->limit(5)->get();
+            return Posts::select('id', 'category_id', 'title', 'slug', 'avatar', 'created_at')
+            ->whereStatus(1)
+            ->limit(5)
+            ->orderBy('id', 'DESC')
+            ->get();
         });
-        $category_post = CategoryPost::select('id', 'title')->whereId(config('custom.post.category_home'))->first();
+        $category_post = CategoryPost::select('id', 'title', 'slug')->whereId(config('custom.post.category_home'))->first();
         if(!$category_post){
-            $category_post = CategoryPost::select('id', 'title')->first();
+            $category_post = CategoryPost::select('id', 'title', 'slug')->first();
         }
         $post_category = $posts->where('category_id', $category_post->id);
-        $posts = $posts->sortByDESC('id');
 
         $place_from = Cache::remember('place_from_sidebar_home', now()->minutes(60), function(){
             return Place::select('id', 'title')->whereType(0)->whereStatus(1)->get();

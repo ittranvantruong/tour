@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryPost extends Model
 {
@@ -26,6 +27,13 @@ class CategoryPost extends Model
                 'source' => 'title'
             ]
         ];
+    }
+    public static function boot()
+    {
+        parent::boot();
+        static::saved(function () {
+			Cache::flush();
+		 });
     }
 
     public function posts(){

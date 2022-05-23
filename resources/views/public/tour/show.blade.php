@@ -73,10 +73,10 @@
                         <hr />
                         <div class="row lienhe_box">
                             <div class="col-md-6">
-                                <a href="#"><i class="fab fa-telegram-plane"></i>Liên hệ</a>
+                                <a href="{{ route('contact') }}"><i class="fab fa-telegram-plane"></i>Liên hệ</a>
                             </div>
                             <div class="col-md-6">
-                                <a href="tel:"><i class="fas fa-phone-alt"></i>0907458176</a>
+                                <a href="tel:{{ $setting['site_hotline'] }}"><i class="fas fa-phone-alt"></i>{{ $setting['site_hotline'] }}</a>
                             </div>
                         </div>
                         <hr />

@@ -41,7 +41,7 @@
     @include('public.search', ['group' => $group])
     
 
-    <section id="banner_bottom_search" class="pb-3">
+    <section id="banner_bottom_search" class="pb-3 display_none_mobile">
         <div class="container pt-1">
             <div class="row">
                 <div class="col-12 pt-1 col-md-6">
@@ -56,7 +56,7 @@
 
 
     <!-- main nav tabs 1 -->
-    <section class="container pb-5" id="main_desktop">
+    <section class="container pb-5 pt-5" id="main_desktop">
         <div class="row">
             <div class="col-12 col-md-9">
                 <!-- Tab content number 1 -->

@@ -9,6 +9,7 @@ use App\Admin\Http\Controllers\CategoryPostController;
 use App\Admin\Http\Controllers\CategoryTourController;
 use App\Admin\Http\Controllers\PlaceTourController;
 use App\Admin\Http\Controllers\TourController;
+use App\Admin\Http\Controllers\SettingController;
 
 Route::get('dang-nhap', [AuthController::class, 'login'])->name('login');
 
@@ -65,6 +66,9 @@ Route::group(['middleware' => ['admin']], function () {
         Route::get('/', [PlaceTourController::class, 'ajaxIndex'])->name('tour.place.index');
 
     });
+    Route::get('cai-dat', [SettingController::class, 'index'])->name('setting');
+    Route::post('cai-dat', [SettingController::class, 'store'])->name('setting.store');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 });

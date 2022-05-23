@@ -3,11 +3,11 @@
 namespace App\View\Composers;
 
 use Illuminate\View\View;
-use App\Models\Tour;
 use App\Models\Posts;
+use App\Models\CategoryPost;
 use Illuminate\Support\Facades\Cache;
 
-class SideBarComposer
+class SidebarPostComposer
 {
     /**
      * The user repository implementation.
@@ -35,18 +35,18 @@ class SideBarComposer
      */
     public function compose(View $view)
     {
-        $group = config('custom.tour.group');
-        $tour_sale = Cache::remember('tour_sale_sidebar', now()->minutes(60), function(){
-            return Tour::select('id', 'title', 'slug', 'avatar', 'price', 'price_promotion')
-            ->whereNotNull('category_id')
-            ->whereNotNull('price_promotion')
-            ->whereStatus(1)
-            ->limit(3)
-            ->get();
-        });
+        
         $posts = Cache::remember('new_post', now()->minutes(60), function(){
             return Posts::get_new_posts()->get();
         });
-        $view->with(['tour_sale' => $tour_sale, 'group' => $group, 'posts' => $posts]);
+
+        $category = Cache::remember('category_sidebar', now()->minutes(60), function(){
+            return CategoryPost::select('id', 'title', 'slug')->whereStatus(1)->orderBy('sort', 'ASC')->get();
+        });
+
+        $view->with([
+            'posts' => $posts, 
+            'category' => $category
+        ]);
     }
 }

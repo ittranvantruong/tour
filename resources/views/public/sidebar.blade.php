@@ -1,8 +1,8 @@
 <div id="shop_sidebar" class="col-12 col-md-3 shop_sidebar">
-    <div id="box_main_side">
+    <!-- <div id="box_main_side">
         <div class="side_box_title">TOUR KHUYẾN MÃI</div>
         <div class="content_box_title">Chưa có khuyến mãi</div>
-    </div>
+    </div> -->
     <div class="pb-2"></div>
     <div id="box_main_side">
         <div class="side_box_title text-uppercase">Cẩm nang du lịch</div>
@@ -10,7 +10,7 @@
             @foreach($posts as $item)
             @if($loop->first)
             <div class="box_blog_text">
-                <a href="#">
+                <a href="{{ route('post.show', $item->slug) }}">
                     <img src="{{ asset($item->avatar) }}" width="100%" height="160px">
                     <div class="bottom-left">
                         <span class="fw-bold">{{ $item->title }}</span>
@@ -20,7 +20,7 @@
             </div>
             @else
             <p class="m-2"> </p>
-            <a href="#" style="text-decoration: none;">
+            <a href="{{ route('post.show', $item->slug) }}" style="text-decoration: none;">
                 <div class="row box_blog_img_left">
                     <div class="col-4">
                         <img src="{{ asset($item->avatar) }}" width="100%" height="50px">
@@ -38,10 +38,12 @@
     <!-- Văn hóa, ẩm thực tabs -->
     <div class="pb-2"></div>
     <div id="box_main_side">
-        <div class="side_box_title text-uppercase">Văn hóa, ẩm thực</div>
+        <div class="side_box_title text-uppercase">
+            <a class="text-white" href="{{ route('post.category.show', $category_post->slug) }}">{{ $category_post->title }}</a>
+        </div>
         <div class="content_box_title">
         @foreach($post_category as $item)
-            <a href="#" style="text-decoration: none;">
+            <a href="{{ route('post.show', $item->slug) }}" style="text-decoration: none;">
                 <div class="row box_blog_img_left">
                     <div class="col-4">
                         <img src="{{ asset($item->avatar) }}" width="100%" height="50px">

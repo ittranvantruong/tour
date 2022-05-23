@@ -3,26 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tour;
-use App\Models\Place;
-use App\Traits\SortTour;
-use DB;
+use App\Models\Posts;
+use App\Models\CategoryPost;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
 
-class PlaceTourController extends Controller
+class CategoryPostController extends Controller
 {
     //
-    use SortTour;
-    public function index(){
-        
-    }
-    public function show(Request $request, $slug){
 
-        $place = Place::select('id', 'title')->whereSlug($slug)->firstOrFail();
-        $title = $place->title;
+    public function show(Request $request, $slug){
+        $category = CategoryPost::select('id', 'title')->whereSlug($slug)->firstOrFail();
+        $title = $category->title;
 
         SEOMeta::setDescription(config('custom.seo.description'));
         SEOMeta::addKeyword(config('custom.seo.keyword'));
@@ -46,15 +40,11 @@ class PlaceTourController extends Controller
         JsonLd::setDescription(config('custom.seo.description'));
         JsonLd::setType('Article');
 
-        $tour_id = DB::table('places_to_tours')->wherePlaceId($place->id)->pluck('tour_id');
-
-        $tours = Tour::select('id', 'group_id', 'title', 'slug', 'avatar', 'price', 'price_promotion')
-            ->whereIn('id', $tour_id)
-            ->whereNotNull('category_id')
-            ->whereStatus(1);
-
-        $tours = $this->sortQuery($request->sort, $tours)->paginate(12);
-
-        return view('public.tour.index', compact('title', 'tours'));
+        $posts = Posts::select('id', 'title', 'slug', 'avatar','created_at')
+            ->whereStatus(1)
+            ->whereCategoryId($category->id)
+            ->orderBy('id', 'desc')
+            ->paginate(8);
+        return view('public.post.index', compact('posts', 'title'));
     }
 }

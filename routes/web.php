@@ -8,6 +8,8 @@ use App\Http\Controllers\GroupTourController;
 use App\Http\Controllers\PlaceTourController;
 use App\Http\Controllers\CategoryTourController;
 use App\Http\Controllers\SearchTourController;
+use App\Http\Controllers\SinglePageController;
+use App\Http\Controllers\CategoryPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,10 @@ use App\Http\Controllers\SearchTourController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::get('gioi-thieu', [SinglePageController::class, 'introduction'])->name('introduction');
+
+Route::get('lien-he', [SinglePageController::class, 'contact'])->name('contact');
 
 Route::group(['prefix' => 'nhom-du-lich', 'as' => 'group.'], function () {
     Route::get('/', [GroupTourController::class, 'index'])->name('index');
@@ -38,13 +44,19 @@ Route::group(['prefix' => 'danh-muc', 'as' => 'category.'], function () {
 });
 
 Route::group(['prefix' => 'du-lich', 'as' => 'tour.'], function () {
-    Route::get('loai-tour', [TourController::class, 'index'])->name('index');
+    Route::get('/', [TourController::class, 'index'])->name('index');
     Route::get('{slug}', [TourController::class, 'show'])->name('show');
 });
 
 Route::group([ 'prefix' => 'tin-tuc', 'as' => 'post.'], function () {
+
+    Route::group([ 'prefix' => 'danh-muc', 'as' => 'category.'], function () {
+        Route::get('/', [CategoryPostController::class, 'index'])->name('index');
+        Route::get('{slug}', [CategoryPostController::class, 'show'])->name('show');
+    });
+
     Route::get('/', [PostController::class, 'index'])->name('index');
-    Route::get('show', [PostController::class, 'show'])->name('show');
+    Route::get('{slug}', [PostController::class, 'show'])->name('show');
 });
 
 Route::group([ 'prefix' => 'tim-kiem', 'as' => 'search.'], function () {

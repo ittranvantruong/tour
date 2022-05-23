@@ -27,5 +27,9 @@ return [
     ], 
     'post' => [
         'category_home' => 2
+    ],
+    'seo' => [
+        'description' => 'Du lịch 3 miền',
+        'keyword' => ['Du lịch trong nước, du lịch nước ngoài'],
     ]
 ];

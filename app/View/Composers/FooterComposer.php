@@ -5,9 +5,10 @@ namespace App\View\Composers;
 use Illuminate\View\View;
 use App\Models\Place;
 use App\Models\Setting;
+use App\Models\Posts;
 use Illuminate\Support\Facades\Cache;
 
-class MenuComposer
+class FooterComposer
 {
     /**
      * The user repository implementation.
@@ -37,25 +38,31 @@ class MenuComposer
     {
         $group = config('custom.tour.group');
 
+        $settings = Cache::remember('setting_footer', now()->minutes(1440), function(){
+            return Setting::select('key', 'plain_value')
+                            ->whereIn('key', ['site_name', 'site_hotline', 'site_tel', 'site_address', 'site_email', 'site_facebook'])
+                            ->pluck('plain_value', 'key');
+        });
+
         $places = Cache::remember('place_menu', now()->minutes(60), function(){
             return Place::select('group', 'slug', 'title')
             ->whereType(1)->whereStatus(1)
             ->orderBy('sort', 'ASC')->get();
         });
-
-        $settings = Cache::remember('setting_menu', now()->minutes(1440), function(){
-            return Setting::select('key', 'plain_value')
-                            ->whereIn('key', ['site_hotline', 'site_logo', 'site_image_header'])
-                            ->pluck('plain_value', 'key');
+        
+        $posts = Cache::remember('new_post', now()->minutes(60), function(){
+            return Posts::get_new_posts()->get();
         });
 
-        $place_domestic = $places->whereIn('group', 0);
-        $place_abroad = $places->whereIn('group', 1);
+        $place_domestic = $places->whereIn('group', 0)->chunk(4);
+        $place_abroad = $places->whereIn('group', 1)->chunk(4);
+
         $view->with([
             'group' => $group, 
             'place_domestic' => $place_domestic, 
             'place_abroad' => $place_abroad, 
-            'settings' => $settings
+            'posts' => $posts, 
+            'settings' => $settings,
         ]);
     }
 }

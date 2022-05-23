@@ -10,46 +10,7 @@
     padding: 5px 10px;
     height: auto;
 }
-/* breadcrumb */
-.shop_breadcrumbs{
-    padding-top: 10px;
-    padding-bottom: 15px;
-    font-size: 14px;
-    text-decoration: none;
-}
-.shop_breadcrumbs a{
-    color: #555 !important;
-}
-.shop_breadcrumbs .active {
-    color: #f1b614;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-.shop_breadcrumbs .breadcrumbs{
-    min-height: 35px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.shop_breadcrumbs .breadcrumbs>li+li:before {
-    content: '>';
-    color: #555;
-    padding: 0 10px;
-}
-.shop_breadcrumbs .breadcrumbs>li+li{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    max-width: 100%;
-    vertical-align: top;
-}
-.shop_breadcrumbs i{
-    padding-right: 8px;
-    font-size: 16px;
-}
+
 
 /* sidebar */
 .shop_sidebar .widget{
@@ -150,24 +111,7 @@
     font-size: 14px;
     text-align: right;
 }
-    /* pagination */
-.noidungtour .page-item:not(.disabled) .page-link{
-    color: #f9db17 !important;
-}
-.noidungtour .page-item.active .page-link {
-    background-color: #f1b614;
-    border-color: #f1b614;
-    color: #fff !important;
-}
-.noidungtour .page-item:not(.disabled, .active):hover .page-link {
-    background-color: #f1b715a3;
-    color: #fff !important;
-}
-.noidungtour .page-item .page-link{
-    box-shadow: none;
-    font-size: 14px;
-    font-weight: 500;
-}
+
 
 
 @media (min-width: 1200px){

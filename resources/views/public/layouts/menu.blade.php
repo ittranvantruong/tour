@@ -5,10 +5,10 @@
             <div class="row">
                 <div class="col-12 col-md-9">
                     <ul class="p-0">
-                        <li><a href="#">TRANG CHỦ</a></li>
-                        <li><a href="#">GIỚI THIỆU</a></li>
-                        <li><a href="#">LIÊN HỆ</a></li>
-                        <li><a href="tel: 0123456789" style="border-right: none">HOTLINE: 0907 458 176 (MS VÀNG)</a>
+                        <li><a href="{{ route('index') }}">TRANG CHỦ</a></li>
+                        <li><a href="{{ route('introduction') }}">GIỚI THIỆU</a></li>
+                        <li><a href="{{ route('contact') }}">LIÊN HỆ</a></li>
+                        <li><a href="tel:{{ $settings['site_hotline'] }}" style="border-right: none">HOTLINE: {{ $settings['site_hotline'] }}</a>
                         </li>
                     </ul>
                 </div>
@@ -31,11 +31,11 @@
             <div class="row align-items-center">
                 <div class="col col-3 text-center p-2">
                     <a href="{{ route('index') }}">
-                        <img src="{{ asset(config('custom.images.logo')) }}" width="100%">
+                        <img src="{{ asset($settings['site_logo']) }}" width="100%">
                     </a>
                 </div>
                 <div class="col col-9">
-                    <img src="{{ asset('public/uploads/images/top_banner.jpeg') }}" width="100%">
+                    <img src="{{ asset($settings['site_image_header']) }}" width="100%">
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="#">Cẩm nang</a></li>
+                            <li><a href="{{ route('post.index') }}">Cẩm nang</a></li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                             </p>
-                            <p><a href="#">Cẩm nang</a></p>
+                            <p><a href="{{ route('post.index') }}">Cẩm nang</a></p>
                         </div>
                     </div>
                 </div>
