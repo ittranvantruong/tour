@@ -25,6 +25,9 @@ class CategoryTour extends Model
         static::saved(function () {
 			Cache::flush();
 		 });
+         static::deleting(function () {
+            Cache::flush();
+		 });
     }
 
     public function tour()
