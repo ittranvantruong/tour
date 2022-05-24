@@ -100,7 +100,7 @@
                                     <div id="{{ $group[0]['slug'] }}" class="accordion-collapse collapse">
                                         <div class="accordion-body">
                                             @foreach($place_domestic as $item)
-                                            <p class="m-0"><a href="#">{{ $item->title }}</a></p>
+                                            <p class="m-0"><a href="{{ route('place.show', $item->slug) }}">{{ $item->title }}</a></p>
                                             @endforeach
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                     <div id="{{ $group[1]['slug'] }}" class="accordion-collapse collapse">
                                         <div class="accordion-body">
                                             @foreach($place_abroad as $item)
-                                            <p class="m-0"><a href="#">{{ $item->title }}</a></p>
+                                            <p class="m-0"><a href="{{ route('place.show', $item->slug) }}">{{ $item->title }}</a></p>
                                             @endforeach
                                         </div>
                                     </div>

@@ -43,7 +43,7 @@
             <div class="product_single">
                 <div class="product_single_inner">
                 @foreach($posts as $item)
-                    <a href="#" style="text-decoration: none;">
+                    <a href="{{ route('post.show', $item->slug) }}" style="text-decoration: none;">
                         <div class="row box_blog_img_left">
                             <div class="col-4">
                                 <img src="{{ asset($item->avatar) }}" width="100%" height="50px">
@@ -71,12 +71,7 @@
 
         </div>
     </div>
-    <!---------------------->
-    <div class="widget widget_img">
-        <a href="#">
-            <img src="image/left_sidebar_banner.jpg" alt="">
-        </a>
-    </div>
+
 </div>
 <!-- button toggle sidebar -->
 <a class="sidebar_toggle_btn" onclick="openSidebar()">

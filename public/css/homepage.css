@@ -64,10 +64,6 @@ a {
     margin-top: 0;
     background-color: #f1b614 !important;
     color: #fff !important;
-    height: 44px;
-    border: none;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
 }
 
 .nav-link {
@@ -141,4 +137,21 @@ div#box_main_side img {
 #header_main_mobi .offcanvas-body a {
     color: white;
 }
-
+.home-nav-tab>div.row>div.col-8{
+    overflow-x: scroll;
+    padding-bottom: 0;
+}
+.home-nav-tab>div.row>div.col-4{
+    padding-bottom: 0;
+}
+.home-nav-tab>div.row>div.col-8::-webkit-scrollbar {
+    width: 0px;
+  }
+.home-nav-tab>div.row>div.col-8 ul.nav{
+    flex-wrap: nowrap;
+    border-bottom: none;
+}
+.home-nav-tab>div.row>div.col-8 ul.nav li.nav-item button{
+    width: max-content;
+    border-bottom: 1px solid #f1b512;
+}

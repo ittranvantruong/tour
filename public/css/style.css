@@ -2,7 +2,9 @@ a {
     color: #000;
     text-decoration: none;
 }
-
+a:hover{
+    color: #f1b512;
+}
 /* breadcrumb */
 .shop_breadcrumbs {
     padding-top: 10px;
@@ -268,6 +270,10 @@ a {
         display: block;
     }
 }
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: #f1b512 #f1b512 #f1b512;
+    color: #f1b512;
+}
 
 @media (max-width: 768px) {
     .display_none_mobile {
@@ -283,5 +289,9 @@ a {
         width: 100%;
         justify-content: space-between;
         margin-top: 15px;
+    }
+    .dropdown-item.active{
+        color: currentColor;
+        background-color: transparent;
     }
 }
