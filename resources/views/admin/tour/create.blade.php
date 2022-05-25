@@ -20,13 +20,16 @@
                     <div class="card-body">
 
                         <div class="row">
-                        <div class="col-12 col-md-12 form-group">
+                            <div class="col-12 col-md-12 form-group">
                                 <label for="">Tên tour</label>
-                                <input type="text" name="title" class="form-control" placeholder="Nhập tiêu đề tour" required data-parsley-required-message="Trường này không được bỏ trống." value="{{ old('title') }}">
+                                <input type="text" name="title" class="form-control" placeholder="Nhập tiêu đề tour"
+                                    required data-parsley-required-message="Trường này không được bỏ trống."
+                                    value="{{ old('title') }}">
                             </div>
                             <div class="col-12 col-md-9 form-group">
                                 <label for="">Mã tour</label>
-                                <input type="text" name="code" class="form-control" value="{{ old('code') }}" placeholder="Nhập mã tour">
+                                <input type="text" name="code" class="form-control" value="{{ old('code') }}"
+                                    placeholder="Nhập mã tour">
                             </div>
                             <div class="col-12 col-md-3 form-group">
                                 <label for="">Trạng thái</label>
@@ -40,19 +43,24 @@
                             <div class="col-12 col-md-6 form-group">
                                 <label for="">Giá tiền</label>
                                 <input type="number" name="price" class="form-control" min="0" placeholder="Giá tiền"
-                                    value="{{ old('price') }}" required data-parsley-number-message="Trường này phải là số." data-parsley-required-message="Trường này không được bỏ trống.">
+                                    value="{{ old('price') }}" required
+                                    data-parsley-number-message="Trường này phải là số."
+                                    data-parsley-required-message="Trường này không được bỏ trống.">
                             </div>
                             <div class="col-12 col-md-6 form-group">
                                 <label for="">Giá khuyến mãi</label>
                                 <input type="number" name="price_promotion" class="form-control" min="0"
-                                    placeholder="Giá khuyến mãi" value="{{ old('price_promotion') }}" data-parsley-lt="input[name='price']"
-                                    data-parsley-number-message="Trường này phải là số." data-parsley-lt-message="Giá khuyến mãi phải nhỏ hơn giá mặc định.">
+                                    placeholder="Giá khuyến mãi" value="{{ old('price_promotion') }}"
+                                    data-parsley-lt="input[name='price']"
+                                    data-parsley-number-message="Trường này phải là số."
+                                    data-parsley-lt-message="Giá khuyến mãi phải nhỏ hơn giá mặc định.">
                             </div>
 
                         </div>
                         <div class="form-group">
                             <label for="">Chương trình tour</label>
-                            <textarea name="description" class="form-control ckeditor">{{ old('description') }}</textarea>
+                            <textarea name="description"
+                                class="form-control ckeditor">{{ old('description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Điều khoản</label>
@@ -78,7 +86,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Nhóm tour</label>
-                            <select name="group_id" class="form-control" required data-parsley-required-message="Trường này không được bỏ trống.">
+                            <select name="group_id" class="form-control" required
+                                data-parsley-required-message="Trường này không được bỏ trống.">
                                 @foreach($group as $key => $value)
                                 <option value="{{ $key }}">{{ $value['title'] }}</option>
                                 @endforeach
@@ -87,7 +96,8 @@
 
                         <div class="form-group">
                             <label for="">Loại tour</label>
-                            <select name="category_id" class="form-control" required data-parsley-required-message="Trường này không được bỏ trống.">
+                            <select name="category_id" class="form-control" required
+                                data-parsley-required-message="Trường này không được bỏ trống.">
                                 <option value="">Chọn loại tour</option>
                                 @foreach($category_tour as $item)
                                 <option value="{{ $item->id }}">{{ $item->title }}</option>
@@ -103,15 +113,17 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Nơi khởi hành</label>
-                            <select name="place_from" class="form-control" required data-parsley-required-message="Trường này không được bỏ trống.">
+                            <select name="place_from" class="form-control" required
+                                data-parsley-required-message="Trường này không được bỏ trống.">
                                 <option value="">Chọn nơi khởi hành</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="">Nơi đến</label>
-                            <select name="place_to[]" class="form-control" multiple required data-parsley-required-message="Trường này không được bỏ trống.">
-                                
+                            <select name="place_to[]" class="form-control" multiple required
+                                data-parsley-required-message="Trường này không được bỏ trống.">
+
                             </select>
                         </div>
                     </div>
@@ -123,10 +135,11 @@
                     <div class="card-body">
                         <div class="form-group">
                             <input type="text" class="form-control d-none" name="avatar"
-                                 value="{{ old('avatar', '/public/images/default-image.png') }}">
+                                value="{{ old('avatar', '/public/images/default-image.png') }}">
                             <img id="avatar" class="add-image-ckfinder pointer" data-preview="#avatar"
                                 data-input="input[name='avatar']" data-type=""
-                                src="{{asset(old('avatar', '/public/images/default-image.png'))}}" alt="" style="width: 100%">
+                                src="{{asset(old('avatar', '/public/images/default-image.png'))}}" alt=""
+                                style="width: 100%">
                         </div>
                     </div>
                 </div>
@@ -136,11 +149,13 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <input type="text" class="d-none" name="gallery" value="" >
+                            <input type="text" class="d-none" name="gallery" value="">
                             <div id="galleryPreview" class="row">
-                                    
+
                             </div>
-                            <button type="button" class="btn btn-primary add-image-ckfinder mt-3" data-preview="#galleryPreview" data-input="input[name='gallery']" data-type="MULTIPLE">thêm thư viện hình ảnh</button>
+                            <button type="button" class="btn btn-primary add-image-ckfinder mt-3"
+                                data-preview="#galleryPreview" data-input="input[name='gallery']"
+                                data-type="MULTIPLE">thêm thư viện hình ảnh</button>
                         </div>
                     </div>
                 </div>
@@ -161,11 +176,10 @@
 <script src="{{ asset('public/lib/Parsley.js-2.9.2/comparison.js') }}"></script>
 <script>
     var routeLoadPlace = "{{ route('admin.ajax.tour.place.index') }}";
-
 </script>
 <script src="{{ asset('public/admin/js/tour.js') }}"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         loadPlace();
     });
 </script>

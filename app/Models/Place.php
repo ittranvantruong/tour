@@ -25,4 +25,8 @@ class Place extends Model
 			Cache::flush();
 		 });
     }
+
+    public function tour(){
+        return $this->belongsToMany(Tour::class, 'places_to_tours', 'place_id', 'tour_id');
+    }
 }

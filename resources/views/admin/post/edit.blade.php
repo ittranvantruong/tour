@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Thêm đơn hàng')
+@section('title', 'Sửa bài viết')
 @push('css')
     <link rel="stylesheet" href="{{ asset('public/lib/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/css/style.css') }}">
@@ -62,6 +62,21 @@
                                         <textarea name="post_content">{{$post->content}}</textarea>
                                     </div>
 
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="text-dark">Nội dung SEO</h4>
+                                    <div class="form-group">
+                                        <label for="">SEO từ khóa(Cách nhau dấu ",")</label>
+                                        <input type="text" name="seo_keys" class="form-control"
+                                            placeholder="SEO từ khóa" value="{{$post->seo_keys}}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">SEO mô tả</label>
+                                        <textarea name="seo_description" class="form-control" placeholder="SEO mô tả">{{$post->seo_description}}</textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

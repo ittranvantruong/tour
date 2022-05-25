@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Chi tiết')
+@section('title', $tour->title)
 
 @push('css')
     <link href="{{ asset('public/css/chitiettour.css') }}" rel="stylesheet" type="text/css">
@@ -16,7 +16,7 @@
                 <div class="page-title-inner container">
                     <ul class="breadcrumbs">
                         <li><a href="#"><i class="fas fa-home"></i>Trang chủ</a></li>
-                        <li class="active"><span>HÀ GIANG - CHÈO THUYỀN SÔNG NHO QUẾ 4N3Đ - KH: THỨ 5 HÀNG TUẦN</span>
+                        <li class="active"><span>{{ $tour->title }}</span>
                         </li>
                     </ul>
                 </div>
@@ -30,58 +30,76 @@
                     <div class="col-lg-6">
                         <div class="fotorama" data-nav="thumbs" data-transition="crossfade" data-allowfullscreen="true"
                             data-fit="cover">
-                            <img src="image/hagiang1.jpg">
-                            <img src="image/hagiang2.jpg">
+                            <img src="{{ asset($tour->avatar) }}">
+                            @foreach($tour->file as $file)
+                                <img src="{{ asset($file->path) }}">
+                            @endforeach
                         </div>
+                        @if($tour->price_promotion)
                         <div class="sale_tag">SALE</div>
+                        @endif
                     </div>
                     <div class="col-lg-6 product_desc">
                         <div class="name_tour">
                             <h1>HÀ GIANG - CHÈO THUYỀN SÔNG NHO QUẾ 4N3Đ - KH: THỨ 5 HÀNG TUẦN</h1>
                         </div>
                         <div class="amount">
-                            <span>5.690.000₫</span>
-                            <del>5.990.000₫</del>
+                        @if($tour->price_promotion)
+                            <span>{{ number_format($tour->price_promotion) }}₫</span>
+                            <del>{{ number_format($tour->price) }}₫</del>
+                        @else
+                        <span>{{ number_format($tour->price) }}₫</span>
+                        @endif
                         </div>
-                        <div>Mã tour: 123</div>
+                        <div>Mã tour: {{ $tour->code }}</div>
                         <hr />
                         <div class="thongtin_tour row">
                             <div class="col-md-6">
                                 <strong>Nơi khởi hành</strong>
-                                <span><a href="#">Hồ Chí Minh</a></span>
+                                <span><a href="{{ route('search.index', ['sel_place_from' => optional($tour->get_place_from)->id]) }}">{{ optional($tour->get_place_from)->title }}</a></span>
                             </div>
                             <div class="col-md-6">
                                 <strong>Nơi đến</strong>
                                 <span>
-                                    <a href="#">Hà Giang</a>,
-                                    <a href="#">Hà Nội</a>
+                                    @foreach($tour->place_to as $item)
+                                    <a href="{{ route('place.show', $item->slug) }}">{{ $item->title }}</a>
+                                    @if(!$loop->last)
+                                    ,
+                                    @endif
+                                    @endforeach
                                 </span>
                             </div>
                         </div>
                         <hr />
                         <div class="row lienhe_box">
                             <div class="col-md-6">
-                                <a href="#"><i class="fab fa-telegram-plane"></i>Liên hệ</a>
+                                <a href="{{ route('contact') }}"><i class="fab fa-telegram-plane"></i>Liên hệ</a>
                             </div>
                             <div class="col-md-6">
-                                <a href="tel:"><i class="fas fa-phone-alt"></i>0907458176</a>
+                                <a href="tel:{{ $setting['site_hotline'] }}"><i class="fas fa-phone-alt"></i>{{ $setting['site_hotline'] }}</a>
                             </div>
                         </div>
                         <hr />
                         <div class="tags_lienquan">
                             <div>
                                 Tags:
-                                <a class="tags" href="#" rel="tag"><span></span>Hà Giang</a>
-                                <a class="tags" href="#" rel="tag"><span></span>Hà Nội</a>
-                                <a class="tags" href="#" rel="tag"><span></span>Hồ Chí Minh</a>
+                                <a class="tags" href="{{ route('search.index', ['sel_place_from' => optional($tour->get_place_from)->id]) }}" rel="tag">
+                                    <span></span>{{ optional($tour->get_place_from)->title }}
+                                </a>
+                                @foreach($tour->place_to as $item)
+                                <a class="tags" href="{{ route('place.show', $item->slug) }}" rel="tag">
+                                    <span></span>{{ $item->title }}
+                                </a>
+                                @endforeach
+                                
                             </div>
                         </div>
-                        <div class="likeshare_btn">
+                        <!-- <div class="likeshare_btn">
                             <div>
                                 <a href="#"><i class="fas fa-thumbs-up"></i> Thích</a>
                                 <a href="#">Chia sẻ</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -101,8 +119,8 @@
                                     role="tab" aria-controls="nav-profile" aria-selected="false">Điều khoản</a>
                                 <a class="nav-item nav-link" data-bs-toggle="tab" href="#quy-dinh"
                                     role="tab" aria-controls="nav-contact" aria-selected="false">Quy định</a>
-                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#binh-luan"
-                                    role="tab" aria-controls="nav-contact" aria-selected="false">Bình luận</a>
+                                <!-- <a class="nav-item nav-link" data-bs-toggle="tab" href="#binh-luan"
+                                    role="tab" aria-controls="nav-contact" aria-selected="false">Bình luận</a> -->
                             </div>
                         </nav>
                         <div class="description_tab d-md-none">
@@ -118,147 +136,29 @@
                                             role="tab" aria-controls="nav-profile" aria-selected="false">Điều khoản</a>
                                         <a class="nav-item nav-link" data-bs-toggle="tab" href="#quy-dinh" onclick="changeTabTitle('Quy định')"
                                             role="tab" aria-controls="nav-contact" aria-selected="false">Quy định</a>
-                                        <a class="nav-item nav-link" data-bs-toggle="tab" href="#binh-luan" onclick="changeTabTitle('Bình luận')"
-                                            role="tab" aria-controls="nav-contact" aria-selected="false">Bình luận</a>
+                                        <!-- <a class="nav-item nav-link" data-bs-toggle="tab" href="#binh-luan" onclick="changeTabTitle('Bình luận')"
+                                            role="tab" aria-controls="nav-contact" aria-selected="false">Bình luận</a> -->
                                     </div>
                                 </nav>
                             </div>
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="chuong-trinh" role="tabpanel" aria-labelledby="nav-home-tab">
-                                Chương trình
+                                {!! $tour->description !!}
                             </div>
                             <div class="tab-pane fade" id="dieu-khoan" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                Điều khoản
+                            {!! $tour->term !!}
                             </div>
                             <div class="tab-pane fade" id="quy-dinh" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                Quy định
+                            {!! $tour->regulation !!}
                             </div>
-                            <div class="tab-pane fade" id="binh-luan" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <!-- <div class="tab-pane fade" id="binh-luan" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 Bình luận
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- sidebar -->
-                    <div id="shop_sidebar" class="col-lg-3 shop_sidebar">
-                        <div class="widget widget_timkiem">
-                            <div class="widget_title">
-                                <h4>Tìm kiếm</h4>
-                            </div>
-                            <div class="widget_content">
-                                <form action="" method="">
-                                    <select name="nhomtour" class="form-control">
-                                        <option value="">--- Nhóm tour ---</option>
-                                        <option value="1">Trong nước</option>
-                                        <option value="2">Nước ngoài</option>
-                                    </select>
-                                    <select name="noikhoihanh" class="form-control">
-                                        <option value="">--- Nơi khởi hành ---</option>
-                                        <option value="1">Hồ Chí Minh</option>
-                                    </select>
-                                    <select name="noiden" class="form-control">
-                                        <option value="">--- Nơi đến ---</option>
-                                        <option value="1">Cù Lao Chàm</option>
-                                        <option value="2">Đà Lạt</option>
-                                        <option value="3">Đà Nẵng</option>
-                                    </select>
-                                    <div class="text-center">
-                                        <button type="submit">tìm kiếm</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!---------------------->
-                        <div class="widget widget_img">
-                            <a href="#">
-                                <img src="image/sibebar_chitiettour.jpg" alt="">
-                            </a>
-                        </div>
-                        <!---------------------->
-                        <div class="widget widget_tourkhuyenmai">
-                            <div class="widget_title">
-                                <h4>Tour khuyến mãi</h4>
-                            </div>
-                            <div class="widget_content">
-                                <div class="product_single">
-                                    <div class="product_single_inner">
-                                        <a class="row" href="#">
-                                            <div class="col-4 product_avt">
-                                                <img src="image/ly-son.jpg" alt="">
-                                            </div>
-                                            <div class="col-8 product_text">
-                                                <h3>LÝ SƠN 2N1Đ_KHỞI HÀNH HẰNG NGÀY</h3>
-                                                <div class="amount">
-                                                    <span>5.690.000₫</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!---------------------->
-                        <div class="widget widget_tourvuaxem">
-                            <div class="widget_title">
-                                <h4>Các tour vừa xem</h4>
-                            </div>
-                            <div class="widget_content">
-                                <div class="product_single">
-                                    <div class="product_single_inner">
-                                        <a class="row" href="#">
-                                            <div class="col-4 product_avt">
-                                                <img src="image/ly-son.jpg" alt="">
-                                            </div>
-                                            <div class="col-8 product_text">
-                                                <h3>LÝ SƠN 2N1Đ_KHỞI HÀNH HẰNG NGÀY</h3>
-                                                <div class="amount">
-                                                    <span>5.690.000₫</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product_single">
-                                    <div class="product_single_inner">
-                                        <a class="row" href="#">
-                                            <div class="col-4 product_avt">
-                                                <img src="image/goi-ca-trich.jpg" alt="">
-                                            </div>
-                                            <div class="col-8 product_text">
-                                                <h3>PHÚ QUỐC 3N2Đ - KHỞI HÀNH ĐỊNH KỲ</h3>
-                                                <div class="amount">
-                                                    <span>5.690.000₫</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!---------------------->
-                        <div class="widget widget_tourthongdung">
-                            <div class="widget_title">
-                                <h4>Các tour thông dụng</h4>
-                            </div>
-                            <div class="widget_content">
-                                <div class="product_single">
-                                    <div class="product_single_inner">
-                                        <a class="row" href="#">
-                                            <div class="col-4 product_avt">
-                                                <img src="image/ly-son.jpg" alt="">
-                                            </div>
-                                            <div class="col-8 product_text">
-                                                <h3>LÝ SƠN 2N1Đ_KHỞI HÀNH HẰNG NGÀY</h3>
-                                                <div class="amount">
-                                                    <span>5.690.000₫</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('public.tour.sidebar')
                     <!-- button toggle sidebar -->
                     <a class="sidebar_toggle_btn" onclick="openSidebar()">
                         <i class="far fa-chevron-right"></i>

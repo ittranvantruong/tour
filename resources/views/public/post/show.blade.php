@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Chi tiết')
+@section('title', $post->title)
 
 @push('css')
     <link href="{{ asset('public/css/post.css') }}" rel="stylesheet" type="text/css">
@@ -15,7 +15,7 @@
                 <div class="page-title-inner container">
                     <ul class="breadcrumbs">
                         <li><a href="{{ route('index') }}"><i class="fas fa-home"></i>Trang chủ</a></li>
-                        <li><a href="{{ route('post.index') }}">Tin tức</a></li>
+                        <li><a href="{{ route('post.index') }}">Cẩm nang du lịch</a></li>
                         <li><a
                                 href="{{ route('post.category', ['category_slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
                         </li>
@@ -44,7 +44,7 @@
                                             href="{{ route('post.category', ['category_slug' => $post->category->slug]) }}"><i
                                                 class="fas fa-user"></i> {{ $post->category->title }}</a></li>
                                     </li>
-                                    <li><a href="#comment-area"><i class="fas fa-comments"></i> 0 Bình luận</a></li>
+                                    <li><a href="#comment-area"><i class="fas fa-comments"></i> {{$post->comment()->count()}} Bình luận</a></li>
                                 </ul>
                             </div>
                             <div class="col-12 post_content">
@@ -58,7 +58,7 @@
                                 </div>
                             </div> --}}
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-12 back_next_post">
                                 <a href="#"><i class="far fa-long-arrow-alt-left"></i> Bài viết cũ hơn</a>
                                 <a href="#">Bài viết mới hơn <i class="far fa-long-arrow-alt-right"></i></a>
@@ -66,7 +66,9 @@
                             <div class="col-12">
                                 <div class="cus_divider"></div>
                             </div>
-                        </div>
+
+                        </div> --}}
+
                         <!-- bài viết liên quan -->
                         <div class="row related_posts">
                             <div class="col-md-6">

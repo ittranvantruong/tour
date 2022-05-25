@@ -11,7 +11,7 @@
             </a>
             <ul class="posted_at">
                 <li><i class="far fa-calendar-alt"></i> {{date('d/m/Y', strtotime($item->created_at))}}</li>
-                <li><i class="fas fa-comments"></i> 0</li>
+                <li><i class="fas fa-comments"></i> {{$item->comment()->count()}}</li>
             </ul>
         </div>
     </div>

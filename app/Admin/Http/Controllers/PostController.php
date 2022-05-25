@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = Posts::create($request->only('title','avatar', 'category_id'));
+        $post = Posts::create($request->only('title','avatar', 'category_id', 'seo_keys', 'seo_description'));
         $post->status = formatStatusButton($request->status);
         $post->content = $request->post_content;
         $post->save();
@@ -81,7 +81,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post= Posts::find($id);
-        $post->update($request->only('title','avatar', 'category_id'));
+        $post->update($request->only('title','avatar', 'category_id', 'seo_keys', 'seo_description'));
         $post->content = $request->post_content;
         $post->status = formatStatusButton($request->status);
         $post->save();

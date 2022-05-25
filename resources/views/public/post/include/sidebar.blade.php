@@ -4,7 +4,7 @@
     </div>
     <div class="widget_content">
         <ul class="category-menu">
-            @foreach (App\Models\CategoryPost::orderBy('sort', 'asc')->get() as $item)
+            @foreach (App\Models\CategoryPost::whereStatus(1)->orderBy('sort', 'asc')->get() as $item)
                 <li><a
                     href="{{ route('post.category', ['category_slug' => $item->slug]) }}">{{$item->title}}</a></li>
             @endforeach
@@ -17,7 +17,7 @@
         <h4>Bài viết mới nhất</h4>
     </div>
     <div class="widget_content">
-        @foreach (App\Models\Posts::with('category')->latest()->take('5')->get()
+        @foreach (App\Models\Posts::whereStatus(1)->with('category')->latest()->take('5')->get()
     as $item)
             @include('public.post.include.post_new_grid', compact('item'))
         @endforeach

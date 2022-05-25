@@ -1,0 +1,34 @@
+.form-group {
+    padding-bottom: 10px;
+}
+
+input:focus {
+    border: 1px solid #f1b614;
+}
+
+#form_lien_he {
+    border: 1px solid #f1b614;
+    background: rgb(255, 212, 95);
+    background: linear-gradient(90deg, #f1b614 0%, rgba(255, 212, 95, 0.6419161414565826));
+    padding: 25px;
+    border-radius: 25px;
+    margin-bottom: 50px;
+}
+
+.map-area,
+.map-area .iframe {
+    border: 2px solid #f1b614;
+}
+
+.section-title {
+    text-transform: uppercase;
+    color: #f1b614;
+    text-align: center;
+}
+
+.map-area .iframe {}
+
+.info-company {
+    list-style: none;
+    padding-left: 0;
+}

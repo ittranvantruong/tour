@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset(config('custom.shortcut-icon')) }}" />
+    {!! SEO::generate() !!}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset(config('custom.images.shortcut-icon')) }}" />
     <!-- Boostrap 5. và JS-->
     <link href="{{ asset('public/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <script src="{{ asset('public/lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/lib/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('public/lib/Parsley.js-2.9.2/parsley.min.js') }}"></script>
 
     <script src="{{ asset('public/lib/bootstrap-5.0.2/dist/js/bootstrap.bundle.min.js') }}">
     </script>

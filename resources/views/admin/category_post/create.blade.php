@@ -38,6 +38,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="text-dark">Nội dung SEO</h4>
+                                    <div class="form-group">
+                                        <label for="">SEO từ khóa(Cách nhau dấu ",")</label>
+                                        <input type="text" name="seo_keys" class="form-control"
+                                            placeholder="SEO từ khóa" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">SEO mô tả</label>
+                                        <textarea name="seo_description" class="form-control" placeholder="SEO mô tả"></textarea>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <button class="btn btn-success" type="submit">Lưu lại</button>

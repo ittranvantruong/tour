@@ -39,7 +39,7 @@ class CategoryPostController extends Controller
     public function store(CategoryPostRequest $request)
     {
         if(CategoryPost::exists()){
-            $categoryPost = CategoryPost::create($request->only('title'));
+            $categoryPost = CategoryPost::create($request->only('title', 'seo_keys', 'seo_description'));
             $categoryPost->status = formatStatusButton($request->status);
             $categoryPost->sort = CategoryPost::max('sort') + 1;
             $categoryPost->save();
@@ -84,7 +84,7 @@ class CategoryPostController extends Controller
     public function update(Request $request, $id)
     {
         $category_post = CategoryPost::find($id);
-        $category_post->update(['title'=>$request->title, 'status' => formatStatusButton($request->status)]);
+        $category_post->update(['title'=>$request->title, 'seo_keys' => $request->seo_keys, 'seo_description'=>$request->seo_description, 'status' => formatStatusButton($request->status)]);
         return back()->with('success', 'Sửa danh mục thành công');
     }
 

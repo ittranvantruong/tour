@@ -18,8 +18,8 @@
             </div>
             <ul class="posted_at">
                 <li><i class="far fa-calendar-alt"></i> {{ date('d/m/Y', strtotime($item->created_at)) }}</li>
-                <li><i class="fas fa-certificate"></i> {{ $item->category->title }}</li>
-                <li><i class="fas fa-comments"></i> 0 Bình luận</li>
+                <li><i class="fas fa-certificate"></i> <a  href="{{ route('post.category', ['category_slug' => $item->category->slug]) }}"> {{ $item->category->title }}</a></li>
+                <li><i class="fas fa-comments"></i> {{$item->comment()->count()}} Bình luận</li>
             </ul>
         </div>
         <div class="read_continue">

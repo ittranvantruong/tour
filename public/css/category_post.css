@@ -30,11 +30,11 @@
 }
 
 .show_posts .post_single:first-child {
-    padding-top: non;
+    padding-top: 0;
 }
 
 .show_posts .post_single:last-child {
-    border-bottom: none;
+    border-bottom: none !important;
 }
 
 .post_single .posted_at i {
@@ -174,9 +174,14 @@
     max-height: 75px;
 }
 
+.post_single .posted_at a {
+    color: #999;
+}
+
 .category-menu {
     list-style: none;
     padding: 0;
+    margin-bottom: 0;
 }
 
 .category-menu li a {

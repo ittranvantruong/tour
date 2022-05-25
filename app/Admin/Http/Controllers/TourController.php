@@ -47,8 +47,13 @@ class TourController extends Controller
             }
             return $item;
         });
-
-        return view('admin.tour.edit', compact('tour', 'group', 'category_tour', 'place_from', 'place_to'));
+        $gallery = '';
+        // dd(round(collect($product->product_review)->avg('rating')/5*100));
+        foreach ($tour->file as $value){
+            $gallery .= $value->path.',';
+        }
+        $gallery = rtrim($gallery, ',');
+        return view('admin.tour.edit', compact('tour', 'group', 'category_tour', 'place_from', 'place_to', 'gallery'));
 
     }
 
