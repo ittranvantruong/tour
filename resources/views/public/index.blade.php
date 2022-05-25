@@ -107,23 +107,23 @@
                     <div class="row">
                         <div class="col-8">
                             <ul class="nav nav-tabs mb-1" role="tablist">
-                                @foreach($tour_macro as $item)
+                                @foreach($tour as $item)
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link add-link-readmore @if($loop->first) active @endif text-uppercase"  data-bs-toggle="tab" data-bs-target="#{{ $item[0]->category_tour->slug }}" data-href="{{ route('category.show', $item[0]->category_tour->slug) }}" data-link_target=".readmore-tab2">
-                                        {{ $item[0]->category_tour->title }}
+                                    <button class="nav-link add-link-readmore @if($loop->first) active @endif text-uppercase"  data-bs-toggle="tab" data-bs-target="#{{ $item->slug }}" data-href="{{ route('category.show', $item->slug) }}" data-link_target=".readmore-tab2">
+                                        {{ $item->title }}
                                     </button>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <a href="{{ route('category.show', $tour_macro->first()[0]->category_tour->slug) }}" class="mt-2 readmore-tab2"><small>Xem thêm <i class="fas fa-angle-double-right"></i></small></a>
+                            <a href="{{ route('category.show', $tour[0]->slug) }}" class="mt-2 readmore-tab2"><small>Xem thêm <i class="fas fa-angle-double-right"></i></small></a>
                         </div>
                     </div>
                     <div class="tab-content pt-2">
-                        @foreach($tour_macro as $item)
-                        <div class="tab-pane fade show @if($loop->first) active @endif" id="{{ $item[0]->category_tour->slug }}">
-                            @include('public.tour.partials.entry-tour', ['data' => $item])
+                        @foreach($tour as $item)
+                        <div class="tab-pane fade show @if($loop->first) active @endif" id="{{ $item->slug }}">
+                            @include('public.tour.partials.entry-tour', ['data' => $item->tour])
                         </div>
                         @endforeach
                     </div>
@@ -147,14 +147,4 @@
 
 @push('js')
 <script src="{{ asset('public/js/header.js') }}"></script>
-<script src="{{ asset('public/js/loaitour.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $(".add-link-readmore").click(function() {
-            var href = $(this).data("href"), target = $(this).data("link_target");
-            $(target).attr("href", href);
-        });
-    })
-
-</script>
 @endpush

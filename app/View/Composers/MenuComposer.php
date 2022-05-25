@@ -5,6 +5,7 @@ namespace App\View\Composers;
 use Illuminate\View\View;
 use App\Models\Place;
 use App\Models\Setting;
+use App\Models\CategoryTour;
 use Illuminate\Support\Facades\Cache;
 
 class MenuComposer
@@ -42,7 +43,12 @@ class MenuComposer
             ->whereType(1)->whereStatus(1)
             ->orderBy('sort', 'ASC')->get();
         });
-
+        $category_tour = Cache::remember('category_tour_menu', now()->minutes(1440), function(){
+            return CategoryTour::select('id', 'title', 'slug')
+            ->whereStatus(1)
+            ->orderBy('sort', 'ASC')
+            ->get();
+        });
         $settings = Cache::remember('setting_menu', now()->minutes(1440), function(){
             return Setting::select('key', 'plain_value')
                             ->whereIn('key', ['site_hotline', 'site_logo', 'site_image_header'])
@@ -55,7 +61,8 @@ class MenuComposer
             'group' => $group, 
             'place_domestic' => $place_domestic, 
             'place_abroad' => $place_abroad, 
-            'settings' => $settings
+            'settings' => $settings,
+            'category_tour' => $category_tour
         ]);
     }
 }

@@ -69,6 +69,17 @@
                                     @endforeach
                                 </ul>
                             </li>
+                            <li>
+                                <a href="{{ route('tour.index') }}">
+                                    Danh mục du lịch
+                                    <span class="arrow arrow-down"></span>
+                                </a>
+                                <ul class="dropdown_menu">
+                                    @foreach($category_tour as $item)
+                                    <li><a href="{{ route('category.show', $item->slug) }}">{{ $item->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li><a href="{{ route('post.index') }}">Cẩm nang</a></li>
                         </ul>
                     </div>
