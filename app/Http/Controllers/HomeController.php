@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Tour;
+use App\Models\CategoryTour;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
@@ -36,25 +37,96 @@ class HomeController extends Controller
         JsonLd::setDescription(config('custom.seo.description'));
         JsonLd::setType('Article');
 
-        $group = config('custom.tour.group');
-        $tour = Cache::remember('tour_home', now()->minutes(60), function(){
-            return Tour::select('id', 'group_id', 'category_id', 'title', 'slug', 'avatar', 'price', 'price_promotion')
-            ->with('category_tour:id,title,slug')
-            ->whereNotNull('category_id')
-            ->whereNotNull('group_id')
-            ->whereStatus(1)->limit(200)->get();
+        $group = config('custom.tour.group'); 
+
+        $data = Cache::remember('tour_home', now()->minutes(60), function(){
+
+            //load category and tour
+            $tour = $this->queryData();
+
+            //get only tour
+            $marco_tour = $tour->map(function($item){
+                return (object) $item->tour;
+            })->collapse();
+
+            //tour trong nước
+            $tour_domestic = $marco_tour->whereIn('group_id', 0);
+
+            if($tour_domestic->count() < 12){
+                $tour_domestic = $this->loadMissingGroup($tour_domestic, 0);
+            }
+
+            //tour ngoài nước
+            $tour_abroad = $marco_tour->whereIn('group_id', 1);
+            if($tour_abroad->count() < 12){
+                $tour_abroad = $this->loadMissingGroup($tour_abroad, 1);
+            }
+
+            //tour sale
+            $tour_sale = $marco_tour->whereNotNull('price_promotion');
+            return [
+                'tour' => $tour,
+                'tour_domestic' => $tour_domestic, 
+                'tour_abroad' => $tour_abroad,
+                'tour_sale' => $tour_sale,
+            ];
         });
+        $data['group'] = $group;
+        return view('public.index', $data);
+    }
 
-        //tour trong nước
-        $tour_domestic = $tour->whereIn('group_id', 0);
-        //tour ngoài nước
-        $tour_abroad = $tour->whereIn('group_id', 1);
-        //tour sale
-        $tour_sale = $tour->whereNotNull('price_promotion');
+    public function queryData(){
+        $tour = CategoryTour::select('id', 'title', 'slug')
+            ->whereStatus(1)
+            ->with(['tour' => function($query){
+                $query->latest();
+                $query->select('id', 'group_id', 'category_id', 'title', 'slug', 'avatar', 'price', 'price_promotion');
+                $query->whereNotNull('group_id');
+                $query->whereStatus(1);
+                $query->limit(36);
+            }])
+            ->orderBy('sort', 'ASC')
+            ->get();
 
-        //Nhóm theo danh mục
-        $tour_macro = $tour->groupBy('category_id');
+        //load record missing every cat
+        $tour = $this->loadMissingCategory($tour);
+        
+        $tour = $tour->reject(function($item){
+            return $item->tour->isEmpty();
+        });
+        // dd($tour);
+        return $tour;
+    }
 
-        return view('public.index', compact('group', 'tour_domestic', 'tour_abroad', 'tour_sale', 'tour_macro'));
+    public function loadMissingCategory($tour){
+        return $tour->map(function ($item){
+            $count = $item->tour->count();
+            $id = $item->tour->pluck('id');
+            if($count < 12){
+                $tour = $item->tour;
+                $item->load(['tour' => function($query) use ($count, $id) {
+                    $query->latest();
+                    $query->select('id', 'group_id', 'category_id', 'title', 'slug', 'avatar', 'price', 'price_promotion');
+                    $query->whereNotNull('group_id');
+                    $query->whereNotIn('id', $id);
+                    $query->whereStatus(1);
+                    $query->limit(12 - $count);
+                }]);
+                $tour = collect(array_merge($tour->all(), $item->tour->all()));
+                $item->tour = $tour;
+                return $item;
+            }
+        });
+    }
+    public function loadMissingGroup($tour, $group_id = 0){
+        $id = $tour->pluck('id');
+        $load = Tour::latest()
+        ->select('id', 'group_id', 'category_id', 'title', 'slug', 'avatar', 'price', 'price_promotion')
+        ->whereGroupId($group_id)
+        ->whereNotIn('id', $id)
+        ->whereStatus(1)
+        ->limit(12 - $tour->count())
+        ->get();
+        return collect(array_merge($tour->all(), $load->all()));
     }
 }

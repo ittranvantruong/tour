@@ -59,6 +59,12 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('admin.lien-he.index')}}" >
+                <i class="fas fa-address-book"></i> <span>Quản lý liên hệ</span>
+            </a>
+        </li>
         
         <!-- Divider -->
         <hr class="sidebar-divider">

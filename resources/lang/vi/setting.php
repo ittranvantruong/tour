@@ -7,7 +7,7 @@ return [
     'site_tel' => 'Tel',
     'site_address' => 'Địa chỉ',
     'site_email' => 'Email',
-    'site_facebook' => 'Facebooke',
+    'site_facebook' => 'Facebook',
     'site_google_map' => 'Google map',
     'site_introduce' => 'Giới thiệu',
 ];

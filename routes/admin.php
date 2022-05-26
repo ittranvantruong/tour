@@ -3,13 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Admin\Http\Controllers\AuthController;
 use App\Admin\Http\Controllers\PostController;
-use App\Admin\Http\Controllers\AdminHomeController;
-use App\Admin\Http\Controllers\CategoryPostController;
-
-use App\Admin\Http\Controllers\CategoryTourController;
-use App\Admin\Http\Controllers\PlaceTourController;
 use App\Admin\Http\Controllers\TourController;
+use App\Admin\Http\Controllers\OrderController;
+
 use App\Admin\Http\Controllers\SettingController;
+use App\Admin\Http\Controllers\AdminHomeController;
+use App\Admin\Http\Controllers\PlaceTourController;
+use App\Admin\Http\Controllers\CategoryPostController;
+use App\Admin\Http\Controllers\CategoryTourController;
 
 Route::get('dang-nhap', [AuthController::class, 'login'])->name('login');
 
@@ -23,6 +24,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resources([
         'danh-muc-bai-viet' => CategoryPostController::class,
         'bai-viet' => PostController::class,
+        'lien-he' => OrderController::class,
     ]); 
     
 

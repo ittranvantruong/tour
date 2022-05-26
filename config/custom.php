@@ -30,6 +30,6 @@ return [
     ],
     'seo' => [
         'description' => 'Du lịch 3 miền',
-        'keyword' => ['Du lịch trong nước, du lịch nước ngoài'],
+        'keyword' => ['Du lịch trong nước', 'du lịch nước ngoài'],
     ]
 ];

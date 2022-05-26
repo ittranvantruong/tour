@@ -102,53 +102,72 @@
             <div class="row">
                 <div class="col-12 col-md-9">
                     <!-- Tab content number 1 -->
-                    <div class="pb-3" id="tab_content_1">
-                        <ul class="nav nav-tabs" id="TabNav1" role="tablist">
-                            <li class="nav-item display_none_mobi" role="presentation">
-                                <button class="nav-link text-uppercase active" id="{{ $group[0]['slug'] }}-tab"
-                                    data-bs-toggle="tab" data-bs-target="#tab-{{ $group[0]['slug'] }}">
-                                    {{ $group[0]['title'] }}
-                                </button>
-                            </li>
-                            <li class="nav-item display_none_mobi" role="presentation">
-                                <button class="nav-link text-uppercase" id="{{ $group[1]['slug'] }}-tab"
-                                    data-bs-toggle="tab" data-bs-target="#tab-{{ $group[1]['slug'] }}">
-                                    {{ $group[1]['title'] }}
-                                </button>
-                            </li>
-                            <li class="nav-item display_none_mobi" role="presentation">
-                                <button class="nav-link text-uppercase" id="tabTourSale-tab" data-bs-toggle="tab"
-                                    data-bs-target="#tabTourSale">
-                                    TOUR KHUYẾN MÃI
-                                </button>
-                            </li>
-
-                            <div class="dropdown display_none_desktop">
-                                <button class="nav-link dropdown active dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ $group[0]['title'] }}
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="home-tab">
-                                    <li>
-                                        <button class="dropdown-item" id="{{ $group[1]['slug'] }}-tab"
-                                            data-bs-toggle="tab" data-bs-target="#tab-{{ $group[0]['slug'] }}">
+                    <div class="pb-3 home-nav-tab" id="tab_content_1">
+                        <div class="row">
+                            <div class="col-8">
+                                <ul class="nav nav-tabs mb-1" id="TabNav1" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link add-link-readmore text-uppercase active"
+                                            id="{{ $group[0]['slug'] }}-tab" data-bs-toggle="tab"
+                                            data-bs-target="#tab-{{ $group[0]['slug'] }}"
+                                            data-href="{{ route('group.show', $group[0]['slug']) }}"
+                                            data-link_target=".readmore-tab1">
                                             {{ $group[0]['title'] }}
                                         </button>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" id="{{ $group[1]['slug'] }}-tab" data-bs-toggle="tab"
-                                            data-bs-target="#tab-{{ $group[1]['slug'] }}">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link add-link-readmore text-uppercase"
+                                            id="{{ $group[1]['slug'] }}-tab" data-bs-toggle="tab"
+                                            data-bs-target="#tab-{{ $group[1]['slug'] }}"
+                                            data-href="{{ route('group.show', $group[1]['slug']) }}"
+                                            data-link_target=".readmore-tab1">
                                             {{ $group[1]['title'] }}
-                                        </a>
+                                        </button>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" id="tabTourSale-tab" data-bs-toggle="tab"
-                                            data-bs-target="#tabTourSale">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link add-link-readmore text-uppercase" id="tabTourSale-tab"
+                                            data-bs-toggle="tab" data-bs-target="#tabTourSale"
+                                            data-href="{{ route('search.index', ['sale' => 1]) }}"
+                                            data-link_target=".readmore-tab1">
                                             TOUR KHUYẾN MÃI
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
+                            <div class="col-4 d-flex justify-content-end">
+                                <a href="{{ route('group.show', $group[0]['slug']) }}"
+                                    class="mt-2 readmore-tab1"><small>Xem thêm <i
+                                            class="fas fa-angle-double-right"></i></small></a>
+                            </div>
+                        </div>
+
+
+                        <div class="dropdown display_none_desktop">
+                            <button class="nav-link dropdown active dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ $group[0]['title'] }}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="home-tab">
+                                <li>
+                                    <button class="dropdown-item" id="{{ $group[1]['slug'] }}-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tab-{{ $group[0]['slug'] }}">
+                                        {{ $group[0]['title'] }}
+                                    </button>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" id="{{ $group[1]['slug'] }}-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tab-{{ $group[1]['slug'] }}">
+                                        {{ $group[1]['title'] }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" id="tabTourSale-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tabTourSale">
+                                        TOUR KHUYẾN MÃI
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                         </ul>
 
                         <div class="tab-content pt-2" id="TabContentGroupTour">
@@ -163,51 +182,46 @@
                             </div>
                             <!-- <a id="btn_xem_them" href="#">Xem thêm >></a> -->
                         </div>
+
                     </div>
                     <!-- End tab content number 1 -->
 
                     <!-- Tab content number 2 -->
-                    <div class="pb-3" id="tab_content_2">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            @foreach ($tour_macro as $item)
-                                <li class="nav-item display_none_mobi" role="presentation">
-                                    <button class="nav-link @if ($loop->first) active @endif text-uppercase"
-                                        id="home-tab" data-bs-toggle="tab"
-                                        data-bs-target="#{{ $item[0]->category_tour->slug }}">
-                                        {{ $item[0]->category_tour->title }}
-                                    </button>
-                                </li>
-                            @endforeach
-
-                            <div class="dropdown display_none_desktop">
-                                <button class="nav-link dropdown active dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    TOUR HÀNG NGÀY
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="home-tab">
-                                    @foreach ($tour_macro as $item)
-                                        <li>
-                                            <a class="dropdown-item" id="home-tab" data-bs-toggle="tab"
-                                                data-bs-target="#{{ $item[0]->category_tour->slug }}">
-                                                {{ $item[0]->category_tour->title }}
-                                            </a>
+                    <div class="pb-3 home-nav-tab" id="tab_content_2">
+                        <div class="row">
+                            <div class="col-8">
+                                <ul class="nav nav-tabs mb-1" role="tablist">
+                                    @foreach ($tour as $item)
+                                        <li class="nav-item" role="presentation">
+                                            <button
+                                                class="nav-link add-link-readmore @if ($loop->first) active @endif text-uppercase"
+                                                data-bs-toggle="tab" data-bs-target="#{{ $item->slug }}"
+                                                data-href="{{ route('category.show', $item->slug) }}"
+                                                data-link_target=".readmore-tab2">
+                                                {{ $item->title }}
+                                            </button>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
-                        </ul>
-                        <div class="tab-content pt-2" id="myTabContent">
-                            @foreach ($tour_macro as $item)
+                            <div class="col-4 d-flex justify-content-end">
+                                <a href="{{ route('category.show', $tour[0]->slug) }}"
+                                    class="mt-2 readmore-tab2"><small>Xem thêm <i
+                                            class="fas fa-angle-double-right"></i></small></a>
+                            </div>
+                        </div>
+                        <div class="tab-content pt-2">
+                            @foreach ($tour as $item)
                                 <div class="tab-pane fade show @if ($loop->first) active @endif"
-                                    id="{{ $item[0]->category_tour->slug }}">
-                                    @include('public.tour.partials.entry-tour', ['data' => $item])
+                                    id="{{ $item->slug }}">
+                                    @include('public.tour.partials.entry-tour', ['data' => $item->tour])
                                 </div>
                             @endforeach
-                            <!-- <a id="btn_xem_them" href="#">Xem thêm >></a> -->
                         </div>
+                        <!-- End tab content number 2 -->
                     </div>
-                    <!-- End tab content number 2 -->
                 </div>
+
 
                 @include('public.sidebar')
             </div>

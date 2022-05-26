@@ -150,29 +150,29 @@
                                                 <td style="text-align: center; padding: 10px">
                                                     <a href="#">
                                                         <img height="50px" width="50px"
-                                                            src="https://cdn-icons-png.flaticon.com/512/906/906382.png"
+                                                            src="{{ asset('public/images/zalo.png') }}"
                                                             alt="Zalo">
                                                     </a>
                                                 </td>
                                                 <td style="text-align: center;  padding: 10px">
                                                     <a href="#">
                                                         <img height="50px" width="50px"
-                                                            src="https://cdn-icons-png.flaticon.com/512/906/906386.png"
-                                                            alt="Messenger">
+                                                        src="{{ asset('public/images/messenger.png') }}"
+                                                        alt="Messenger">
                                                     </a>
                                                 </td>
                                                 <td style="text-align: center;  padding: 10px">
                                                     <a href="#">
                                                         <img height="50px" width="50px"
-                                                            src="https://cdn-icons-png.flaticon.com/512/185/185983.png"
-                                                            alt="youtube">
+                                                        src="{{ asset('public/images/youtube.png') }}"
+                                                        alt="youtube">
                                                     </a>
                                                 </td>
                                                 <td style="text-align: center;  padding: 10px">
                                                     <a href="#">
                                                         <img height="50px" width="50px"
-                                                            src="https://cdn-icons-png.flaticon.com/512/1312/1312139.png"
-                                                            alt="facebook">
+                                                        src="{{ asset('public/images/facebook.png') }}"
+                                                        alt="facebook">
                                                     </a>
                                                 </td>
                                             </tr>

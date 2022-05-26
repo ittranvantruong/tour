@@ -10,6 +10,16 @@ if (!function_exists('status')) {
     }
 }
 
+if (!function_exists('getOrderStatus')) {
+    function getOrderStatus($value){
+        if($value == 0){
+            return '<span class="badge badge-secondary">Chưa liên hệ</span>';
+        }
+        return '<span class="badge badge-success">Đã liên hệ</span>';
+
+    }
+}
+
 if (!function_exists('selected')) {
     function selected($value1, $value2){
         if($value1 == $value2){

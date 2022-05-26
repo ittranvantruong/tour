@@ -10,5 +10,9 @@ class Order extends Model
     use HasFactory;
     protected $table = 'orders';
 
-    protected $fillable = ['tour_id', 'fullname', 'phone', 'email', 'birthday', 'amount_customer', 'payment_method'];
+    protected $fillable = ['tour_id', 'fullname', 'phone', 'email', 'birthday', 'amount_customer', 'payment_method', 'content', 'note', 'status'];
+    
+    function tour(){
+        return $this->belongsTo(Tour::class, 'tour_id', 'id');
+    }
 }

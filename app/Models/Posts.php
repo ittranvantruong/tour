@@ -34,6 +34,9 @@ class Posts extends Model
         static::saved(function () {
 			Cache::flush();
 		 });
+         static::deleting(function () {
+            Cache::flush();
+		 });
     }
     public function category(){
         return $this->belongsTo(CategoryPost::class, 'category_id', 'id');

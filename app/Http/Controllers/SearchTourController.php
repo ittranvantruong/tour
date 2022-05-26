@@ -65,6 +65,11 @@ class SearchTourController extends Controller
             $tour_id = DB::table('places_to_tours')->wherePlaceId($request->sel_place_to_tour)->pluck('tour_id');
             $tours = $tours->whereIn('id', $tour_id);
         }
+        // tìm kiếm sale
+        if($request->filled('sale')){
+            $query = $request->sale ? 'whereNotNull' : 'whereNull';
+            $tours = $tours->$query('price_promotion');
+        }
         // sắp xếp
         $tours = $this->sortQuery($request->sort, $tours)->paginate(12);
 

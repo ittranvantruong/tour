@@ -43,11 +43,7 @@
             <div class="product_single">
                 <div class="product_single_inner">
                 @foreach($posts as $item)
-                    <a href="{{ route('post.show', ['category_slug' => $item->category()->value('slug'), 'post_slug' => $item->slug]) }}" style="text-decoration: none;">
                         <div class="row box_blog_img_left">
-                            <div class="col-4">
-                                <img src="{{ asset($item->avatar) }}" width="100%" height="50px">
-                            </div>
                             <div class="col-8 ps-0">
                                 <p class="m-0 fw-bold">{{ $item->title }}</p>
                                 <p class="m-0">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
@@ -71,12 +67,7 @@
 
         </div>
     </div>
-    <!---------------------->
-    <div class="widget widget_img">
-        <a href="#">
-            <img src="image/left_sidebar_banner.jpg" alt="">
-        </a>
-    </div>
+
 </div>
 <!-- button toggle sidebar -->
 <a class="sidebar_toggle_btn" onclick="openSidebar()">

@@ -55,5 +55,4 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/js/loaitour.js') }}"></script>
 @endpush

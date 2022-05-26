@@ -20,7 +20,7 @@ class SettingController extends Controller
         foreach($array as $key => $value){
             Setting::updateOrCreate(
                 ['key' => $key],
-                ['plain_value' => $value]
+                ['plain_value' => $value],
             );
         }
         return back()->with('success', 'Thực hiện thành công');
