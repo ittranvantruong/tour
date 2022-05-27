@@ -83,7 +83,7 @@ class HomeController extends Controller
                 $query->select('id', 'group_id', 'category_id', 'title', 'slug', 'avatar', 'price', 'price_promotion');
                 $query->whereNotNull('group_id');
                 $query->whereStatus(1);
-                $query->limit(1);
+                $query->limit(36);
             }])
             ->orderBy('sort', 'ASC')
             ->get();
