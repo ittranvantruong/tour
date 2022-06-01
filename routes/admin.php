@@ -8,9 +8,11 @@ use App\Admin\Http\Controllers\OrderController;
 
 use App\Admin\Http\Controllers\SettingController;
 use App\Admin\Http\Controllers\AdminHomeController;
+use App\Admin\Http\Controllers\IntroduceController;
 use App\Admin\Http\Controllers\PlaceTourController;
 use App\Admin\Http\Controllers\CategoryPostController;
 use App\Admin\Http\Controllers\CategoryTourController;
+use App\Admin\Http\Controllers\CategoryIntroduceController;
 
 Route::get('dang-nhap', [AuthController::class, 'login'])->name('login');
 
@@ -21,9 +23,13 @@ Route::get('/', function(){
 });
 Route::group(['middleware' => ['admin']], function () {
     Route::put('/danh-muc-bai-viet/update-sort', [CategoryPostController::class, 'updateSortable'])->name('category.updateSort');
+    Route::put('/danh-muc-gioi-thieu/update-sort', [CategoryIntroduceController::class, 'updateSortable'])->name('introduce.updateSort');
+
     Route::resources([
         'danh-muc-bai-viet' => CategoryPostController::class,
         'bai-viet' => PostController::class,
+        'danh-muc-gioi-thieu' => CategoryIntroduceController::class,
+        'bai-viet-gioi-thieu' => IntroduceController::class,
         'lien-he' => OrderController::class,
     ]); 
     

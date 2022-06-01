@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use App\Models\Tour;
+use App\Models\Setting;
 use App\Models\CategoryTour;
+use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Illuminate\Support\Facades\Cache;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
-use Artesaos\SEOTools\Facades\JsonLd;
 
 class HomeController extends Controller
 {
     //
     public function index(){
+        $setting = Setting::select('key', 'plain_value')->where('key', 'site_zalo')
+        ->pluck('plain_value', 'key');;
         SEOMeta::setDescription(config('custom.seo.description'));
         SEOMeta::addKeyword(config('custom.seo.keyword'));
         OpenGraph::setDescription(config('custom.seo.description'));
@@ -72,7 +75,7 @@ class HomeController extends Controller
             ];
         });
         $data['group'] = $group;
-        return view('public.index', $data);
+        return view('public.index', $data, compact('setting'));
     }
 
     public function queryData(){

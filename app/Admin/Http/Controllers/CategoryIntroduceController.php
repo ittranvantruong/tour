@@ -4,10 +4,11 @@ namespace App\Admin\Http\Controllers;
 
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
+use App\Models\CategoryIntroduce;
 use App\Http\Controllers\Controller;
 use App\Admin\Http\Requests\CategoryPostRequest;
 
-class CategoryPostController extends Controller
+class CategoryIntroduceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class CategoryPostController extends Controller
      */
     public function index()
     {
-        $category_posts = CategoryPost::with('posts')->orderBy('sort','asc')->get();
-        return view('admin.category_post.index', compact('category_posts'));
+        $category_introduces = CategoryIntroduce::with('introduces')->orderBy('sort','asc')->get();
+        return view('admin.category_introduce.index', compact('category_introduces'));
     }
 
     /**
@@ -27,7 +28,7 @@ class CategoryPostController extends Controller
      */
     public function create()
     {
-        return view('admin.category_post.create');
+        return view('admin.category_introduce.create');
     }
 
     /**
@@ -38,17 +39,17 @@ class CategoryPostController extends Controller
      */
     public function store(CategoryPostRequest $request)
     {
-        if(CategoryPost::exists()){
-            $categoryPost = CategoryPost::create($request->only('title', 'seo_keys', 'seo_description'));
-            $categoryPost->status = formatStatusButton($request->status);
-            $categoryPost->sort = CategoryPost::max('sort') + 1;
-            $categoryPost->save();
+        if(CategoryIntroduce::exists()){
+            $category_introduce = CategoryIntroduce::create($request->only('title', 'seo_keys', 'seo_description'));
+            $category_introduce->status = formatStatusButton($request->status);
+            $category_introduce->sort = CategoryIntroduce::max('sort') + 1;
+            $category_introduce->save();
         }else{
-            $categoryPost = CategoryPost::create($request->only('title'));
-            $categoryPost->status = formatStatusButton($request->status);
-            $categoryPost->save();
+            $category_introduce = CategoryIntroduce::create($request->only('title'));
+            $category_introduce->status = formatStatusButton($request->status);
+            $category_introduce->save();
         }
-        return back()->with('success', 'Thêm danh mục thành công');
+        return back()->with('success', 'Thêm danh mục giới thiệu thành công');
     }
 
     /**
@@ -96,16 +97,16 @@ class CategoryPostController extends Controller
      */
     public function destroy($id)
     {
-        $category_post = CategoryPost::whereId($id)->first();
-        $category_post->posts()->update(['category_id' =>1]);
-        CategoryPost::whereId($id)->delete();
+        $category_introduce = CategoryIntroduce::whereId($id)->first();
+        $category_introduce->introduces()->update(['introduce_id' =>1]);
+        CategoryIntroduce::whereId($id)->delete();
         return response()->json(['status'=>true,'messag'=>'Đã xóa danh mục']);
     }
 
     public function updateSortable(Request $request){
-        $category_post = CategoryPost::find($request->id);
-        $category_post->sort = $request->index;
-        $category_post->save();
+        $category_introduce = CategoryIntroduce::find($request->id);
+        $category_introduce->sort = $request->index;
+        $category_introduce->save();
         return response()->json(['status'=>true,'messag'=>'Đã lưu thứ tự sắp xếp mới']);
 
     }

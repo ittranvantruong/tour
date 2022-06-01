@@ -36,7 +36,7 @@
     <div class="col-12 col-md-12 form-group overflow-hidden">
         <label for="">{{ __('setting.'.$item->key) }}</label>
         <input type="text" class="form-control d-none" name="{{ $item->key }}" value="{{ $item->plain_value }}">
-        <img id="avatar" class="add-image-ckfinder pointer" data-preview="#avatar"
+        <img id="{{ $item->key }}" class="add-image-ckfinder pointer" data-preview="#{{ $item->key }}"
             data-input="input[name='{{ $item->key }}']" data-type=""
             src="{{asset($item->plain_value)}}">
     </div>

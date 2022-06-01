@@ -208,6 +208,12 @@
 @media only screen and (max-width: 600px) {
     .post-title {
         max-height: 65px;
+        line-height: 19px !important;
+        font-size: 15px !important;
+        min-height: 40px;
+    }
+    .post_single .posted_at {
+        margin-bottom: 10px;
     }
 }
 

@@ -60,6 +60,23 @@
             </div>
         </li>
         <hr class="sidebar-divider">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuIntroduceCategory"
+                aria-expanded="true" aria-controls="menuBlogCategory">
+                <i class="fas fa-newspaper"></i> <span>Quản lý giới thiệu</span>
+            </a>
+            <div id="menuIntroduceCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#menuIntroduceCategory">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.bai-viet-gioi-thieu.index') }}">Tất cả bài giới thiệu</a>
+                    <a class="collapse-item" href="{{ route('admin.bai-viet-gioi-thieu.create') }}">Thêm bài giới thiệu</a>
+                    <a class="collapse-item" href="{{ route('admin.danh-muc-gioi-thieu.index') }}">Tất cả mục giới thiệu</a>
+                    <a class="collapse-item" href="{{ route('admin.danh-muc-gioi-thieu.create') }}">Thêm mục giới thiệu mới</a>
+
+                </div>
+            </div>
+        </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('admin.lien-he.index')}}" >
                 <i class="fas fa-address-book"></i> <span>Quản lý liên hệ</span>

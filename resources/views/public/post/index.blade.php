@@ -30,7 +30,7 @@
                     <div class="col-lg-9 show_posts">
                         <div class="show_posts">
                             @foreach ($posts as $item)
-                                @include('public.post.include.post_grid', compact('item'))
+                                @include('public.post.include.post_grid', ['category'=>$item->category, 'item'=>$item])
                             @endforeach
                         </div>
                         <div class="text-center">

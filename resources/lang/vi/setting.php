@@ -10,4 +10,6 @@ return [
     'site_facebook' => 'Facebook',
     'site_google_map' => 'Google map',
     'site_introduce' => 'Giới thiệu',
+    'site_zalo' => 'Zalo',
+
 ];

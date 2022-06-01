@@ -20,7 +20,7 @@
             </div>
         </a>
         <div class="buy_now_btn">
-            <a href="{{route('contact',['tour'=> $item->slug])}}" class=""><span>Đặt ngay</span><i class="far fa-chevron-right"></i></a>
+            <a href="https://zalo.me/{{$setting['site_zalo']}}" target="_blank" class=""><span>Đặt ngay</span><i class="far fa-chevron-right"></i></a>
         </div>
     </div>
 </div>

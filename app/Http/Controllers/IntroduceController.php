@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posts;
-use App\Models\Comment;
-use App\Models\CategoryPost;
+use App\Models\Tour;
+use App\Models\Order;
+use App\Models\Setting;
+use App\Models\Introduce;
 use Illuminate\Http\Request;
+use App\Models\CategoryIntroduce;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Illuminate\Support\Facades\Cache;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use App\Http\Controllers\MailController;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
-use Artesaos\SEOTools\Facades\JsonLd;
 
-class PostController extends Controller
+class IntroduceController extends Controller
 {
     public function index(){
-        $posts = Posts::whereStatus(1)->with('category')->latest()->paginate(10);
-        $category = CategoryPost::whereStatus(1)->with('posts')->orderBy('sort', 'asc')->first();
-
-        $title = 'Cẩm nang du lịch';
+        $title = 'Giới thiệu';
 
         SEOMeta::setDescription(config('custom.seo.description'));
         SEOMeta::addKeyword(config('custom.seo.keyword'));
@@ -41,16 +42,15 @@ class PostController extends Controller
         JsonLd::setDescription(config('custom.seo.description'));
         JsonLd::setType('Article');
 
-        // $posts = Posts::select('id', 'title', 'slug', 'avatar','created_at')
-        //     ->whereStatus(1)
-        //     ->orderBy('id', 'desc')
-        //     ->paginate(8);
-        
-        return view('public.post.index', compact('posts', 'title'));
+        $content = 'Giới thiệu';
+        $setting = Setting::select('plain_value')->where('key', 'site_introduce')->first();
+        if($setting){
+            $content = $setting->plain_value;
+        }
+        return view('public.introduce.index', compact('title', 'content'));
     }
-    
     public function category(Request $request){
-        $category = CategoryPost::whereSlug($request->category_slug)->first();
+        $category = CategoryIntroduce::whereSlug($request->category_slug)->first();
         SEOMeta::setDescription($category->seo_description);
         SEOMeta::addKeyword($category->seo_keys);
         OpenGraph::setDescription($category->seo_description);
@@ -72,37 +72,16 @@ class PostController extends Controller
         JsonLd::setTitle('Article');
         JsonLd::setDescription($category->seo_description);
         JsonLd::setType('Article');
-        return view('public.post.category',compact('category'));
+        return view('public.introduce.category',compact('category'));
 
-    }
-
-    // public function show(Request $request){
-    //     $post = Posts::whereSlug($request->post_slug)->with('category')->first();
-    //     $post_related =  Posts::whereCategoryId($post->category_id)->with('category')->take(2)->get();
-    //     return view('public.post.show', compact('post', 'post_related'));
-    // }
-
-    public function postComment(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'content' => 'required',
-        ], [
-
-            'name.required' => 'Nhập tên của bạn',
-            'email.required' => 'Nhập email của bạn',
-            'content.required' => 'Nhập nội dung',
-        ]);
-        Comment::create($request->all());
-        return back()->with('success', 'Đã đăng bình luận của bạn');
     }
     public function show(Request $request, $slug){
         // $post = Posts::select('id', 'category_id', 'title', 'avatar', 'content','created_at')
         //     ->whereStatus(1)
         //     ->whereSlug($slug)
         //     ->first();
-        $post = Posts::whereSlug($request->post_slug)->with('category')->first();
-        $post_related =  Posts::whereCategoryId($post->category_id)->with('category')->take(2)->get();
+        $post = Introduce::whereSlug($request->post_slug)->with('category')->first();
+        $post_related =  Introduce::whereIntroduceId($post->introduce_id)->with('category')->take(2)->get();
         SEOMeta::setDescription($post->seo_description);
         SEOMeta::addKeyword($post->seo_keys);
         OpenGraph::setDescription($post->seo_description);
@@ -125,7 +104,7 @@ class PostController extends Controller
         JsonLd::setDescription($post->seo_description);
         JsonLd::setType('Article');
 
-        $related_posts = $post->related_posts()->get();
-        return view('public.post.show', compact('post', 'post_related'));
-}
+        // $related_posts = $post->related_posts()->get();
+        return view('public.introduce.show', compact('post', 'post_related'));
+    }
 }

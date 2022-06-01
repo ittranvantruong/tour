@@ -172,13 +172,13 @@
 
                         <div class="tab-content pt-2" id="TabContentGroupTour">
                             <div class="tab-pane fade show active" id="tab-{{ $group[0]['slug'] }}">
-                                @include('public.tour.partials.entry-tour', ['data' => $tour_domestic])
+                                @include('public.tour.partials.entry-tour', ['setting'=> $setting, 'data' => $tour_domestic])
                             </div>
                             <div class="tab-pane fade show" id="tab-{{ $group[1]['slug'] }}">
-                                @include('public.tour.partials.entry-tour', ['data' => $tour_abroad])
+                                @include('public.tour.partials.entry-tour', ['setting'=> $setting, 'data' => $tour_abroad])
                             </div>
                             <div class="tab-pane fade" id="tabTourSale">
-                                @include('public.tour.partials.entry-tour', ['data' => $tour_sale])
+                                @include('public.tour.partials.entry-tour', ['setting'=> $setting, 'data' => $tour_sale])
                             </div>
                             <!-- <a id="btn_xem_them" href="#">Xem thêm >></a> -->
                         </div>
@@ -221,12 +221,12 @@
                         <!-- End tab content number 2 -->
                     </div>
                 </div>
-
+  
 
                 @include('public.sidebar')
             </div>
         </section>
-
+  
         @include('public.partner')
     </main>
 
@@ -248,8 +248,8 @@
                 'theme': 'clean',
                 'show_randomly': true,
                 'auto_play': true,
-                'navigation': true,
-                'dots': true,
+                'navigation': false,
+                'dots': false,
                 'hide_tools': false,
                 'enable_navigation_keys': true,
                 'with_animations': ["cube", "cudeRandom", "block", "blind", "paralell", "glassBlock",

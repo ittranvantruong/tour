@@ -14,8 +14,8 @@
     margin-right: 10px;
 }
 
-.list-sortable li i.my-handle {
-    margin-right: 10px;
+.list-sortable li i {
+    margin-right: 10px !important;
 }
 
 .list-sortable li .sortable-tool i {

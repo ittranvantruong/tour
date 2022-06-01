@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Tour;
-use App\Models\CategoryTour;
+use App\Models\Setting;
 use App\Traits\SortTour;
+use App\Models\CategoryTour;
+use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
-use Artesaos\SEOTools\Facades\JsonLd;
 
 class CategoryTourController extends Controller
 {
@@ -23,7 +24,10 @@ class CategoryTourController extends Controller
         
         $category_tour = CategoryTour::select('id', 'title')->whereSlug($slug)->firstOrFail();
         $title = $category_tour->title;
-
+        $setting = Setting::select('key', 'plain_value')
+        ->where('key', 'site_hotline')
+        ->orWhere('key', 'site_zalo')
+        ->pluck('plain_value', 'key');
 
         SEOMeta::setDescription(config('custom.seo.description'));
         SEOMeta::addKeyword(config('custom.seo.keyword'));
@@ -53,6 +57,6 @@ class CategoryTourController extends Controller
 
         $tours = $this->sortQuery($request->sort, $tours)->paginate(12);
 
-        return view('public.tour.index', compact('title', 'tours'));
+        return view('public.tour.index', compact('title', 'tours', 'setting'));
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\GroupTourController;
+use App\Http\Controllers\IntroduceController;
 use App\Http\Controllers\PlaceTourController;
 use App\Http\Controllers\SearchTourController;
 use App\Http\Controllers\SinglePageController;
@@ -25,7 +26,6 @@ use App\Http\Controllers\CategoryTourController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('gioi-thieu', [SinglePageController::class, 'introduction'])->name('introduction');
 
 Route::get('lien-he', [SinglePageController::class, 'contact'])->name('contact');
 Route::post('gui-lien-he', [SinglePageController::class, 'postContact'])->name('contact.postContact');
@@ -47,6 +47,12 @@ Route::group(['prefix' => 'danh-muc', 'as' => 'category.'], function () {
 Route::group(['prefix' => 'du-lich', 'as' => 'tour.'], function () {
     Route::get('/', [TourController::class, 'index'])->name('index');
     Route::get('{slug}', [TourController::class, 'show'])->name('show');
+});
+Route::group([ 'prefix' => 'gioi-thieu', 'as' => 'introduction.'], function () {
+    Route::get('/', [IntroduceController::class, 'index'])->name('index');
+    Route::get('{category_slug}', [IntroduceController::class, 'category'])->name('category');
+    Route::get('{category_slug}/{post_slug}', [IntroduceController::class, 'show'])->name('show');
+
 });
 
 Route::group([ 'prefix' => 'cam-nang', 'as' => 'post.'], function () {

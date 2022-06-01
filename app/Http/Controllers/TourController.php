@@ -20,7 +20,10 @@ class TourController extends Controller
     public function index(Request $request){
 
         $title = $this->title;
-
+        $setting = Setting::select('key', 'plain_value')
+        ->where('key', 'site_hotline')
+        ->orWhere('key', 'site_zalo')
+        ->pluck('plain_value', 'key');
         SEOMeta::setDescription(config('custom.seo.description'));
         SEOMeta::addKeyword(config('custom.seo.keyword'));
         OpenGraph::setDescription(config('custom.seo.description'));
@@ -48,13 +51,14 @@ class TourController extends Controller
             ->whereStatus(1);
         $tours = $this->sortQuery($request->sort, $tours)->paginate(12);
 
-        return view('public.tour.index', compact('title', 'tours'));
+        return view('public.tour.index', compact('title', 'tours', 'setting'));
     }
 
     public function show($slug){
 
         $setting = Setting::select('key', 'plain_value')
                             ->where('key', 'site_hotline')
+                            ->orWhere('key', 'site_zalo')
                             ->pluck('plain_value', 'key');
 
         $tour = Tour::whereSlug($slug)->with(['get_place_from:id,title,slug', 'place_to:id,title,slug', 'file'])->firstOrFail();

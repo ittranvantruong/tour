@@ -23,7 +23,8 @@
 
     <!-- List CSS Link-->
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('public/css/header.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('public/css/header2.css') }}" rel="stylesheet" type="text/css">
+
     <link href="{{ asset('public/css/footer.css') }}" rel="stylesheet" type="text/css">
     @stack('css')
     <!-- End list CSS Link-->

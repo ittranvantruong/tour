@@ -40,7 +40,7 @@ class FooterComposer
 
         $settings = Cache::remember('setting_footer', now()->minutes(1440), function(){
             return Setting::select('key', 'plain_value')
-                            ->whereIn('key', ['site_name', 'site_hotline', 'site_tel', 'site_address', 'site_email', 'site_facebook'])
+                            ->whereIn('key', ['site_name', 'site_hotline', 'site_tel', 'site_address', 'site_email', 'site_facebook', 'site_zalo'])
                             ->pluck('plain_value', 'key');
         });
 
