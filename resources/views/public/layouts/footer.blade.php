@@ -71,19 +71,11 @@
     </section>
     <p class="copyright p-2 m-0 text-white text-center">&copy;Tour</p>
 
-    <a href="tel:{{ $settings['site_hotline'] }}" class="suntory-alo-phone suntory-alo-green" id=""
-        style="right: 0px; bottom: 100px;">
-        <div class="suntory-alo-ph-circle"></div>
-        <div class="suntory-alo-ph-circle-fill"></div>
-        <div class="suntory-alo-ph-img-circle"><i class="fa fa-phone"></i></div>
+ 
+    <a href="tel:{{ $settings['site_hotline'] }}" class="contact-btn contact-phone" id="" >
+        <img src="{{ asset('public/images/phone.png') }}" height="50px" width="50px" alt="">
     </a>
-    <a href="https://zalo.me/{{$settings['site_zalo']}}" class="" id="" style="position: fixed;
-    right: 0px;
-    display: block;
-    bottom: 240px;
-    height: 50px;
-    /* width: 50px; */
-    width: 95px;">
+    <a href="https://zalo.me/{{ $settings['site_zalo'] }}" class="contact-btn contact-zalo" id="" >
         <img src="{{ asset('public/images/zalo.png') }}" height="50px" width="50px" alt="">
     </a>
     <div onclick="topFunction()" id="gotoTop" class="fa fa-arrow-up" style="display: block;"></div>

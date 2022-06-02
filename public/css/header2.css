@@ -1,13 +1,4 @@
-html,
-body {
-    width: auto!important;
-    overflow-x: hidden!important
-}
-
 @media (min-width: 768px) {
-    .container {
-        width: 1240px;
-    }
     .display_none_desktop {
         display: none;
     }
@@ -40,6 +31,9 @@ body {
     #header_main_desktop {
         display: none;
     }
+    #top_bar {
+        background: linear-gradient(45deg, #ffc105 0%, #ffc105 61%, transparent 26%), linear-gradient(-45deg, #42a2d9 0%, #42a1d9 27%) !important;
+    }
     /* #top_bar:after {    
         content: "";
         display: inline-block;
@@ -65,13 +59,13 @@ body {
 
 #top_bar {
     background: linear-gradient(to right, #f1b614 28%, #3c5caa 5%);
-    line-height: 1.8;
+    padding: 5px 0px;
+    background: linear-gradient(45deg, #ffc105 0%, #ffc105 33%, transparent 26%), linear-gradient(-45deg, #42a2d9 0%, #42a1d9 27%);
 }
 
 .search {
     padding: 0px 8px 0px 0px;
     position: relative;
-    background: #f1b614;
     float: left;
 }
 
@@ -80,8 +74,7 @@ body {
     padding: 0 30px 0 5px;
     color: #888;
     width: 200px;
-    height: 22px;
-    line-height: 22px;
+    line-height: 30px;
     border: none;
     outline: none;
 }
@@ -127,7 +120,7 @@ i.fa.fa-facebook {
 #nav_bar_desktop a.nav-link {
     font-size: 15px;
     color: #000;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
@@ -169,7 +162,8 @@ i.fa.fa-facebook {
 
 #nav_bar_desktop .navbar-nav>li>.dropdown-menu a {
     display: block;
-    padding: 10px 10px 9px 10px;
+    font-size: 13px;
+    padding: 10px 5px 10px 6px;
     border-top: 1px solid #ddd;
     color: #fff;
     text-decoration: none;

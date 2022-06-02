@@ -7,6 +7,10 @@ a:hover {
     color: #f1b512;
 }
 
+body {
+    font-family: 'Mulish', sans-serif;
+}
+
 
 /* breadcrumb */
 

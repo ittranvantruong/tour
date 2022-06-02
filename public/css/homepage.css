@@ -25,19 +25,19 @@ a {
     text-decoration: none;
 }
 
+#box_tim_kiem {
+    margin-top: 20px;
+}
+
 @media (min-width: 768px) {
     .display_none_desktop {
         display: none;
     }
-    #box_tim_kiem {
-        height: 30px;
-    }
     #des_search {
         overflow: hidden;
-        top: -300px;
+        top: -100px;
         background: #fff;
         box-shadow: 0px 5px 5px #c8c8c8;
-        padding: 0px 5px 10px 10px;
         margin-bottom: -60px;
         border-radius: 4px;
         background: linear-gradient(to bottom, #fff 0%, #f2f2f2 100%);
@@ -56,7 +56,10 @@ a {
 
 #search-head-title {
     margin-top: 0 !important;
-    margin-bottom: 20px !important;
+}
+
+#box-search {
+    padding: 20px 10px;
 }
 
 #des_search select.form-control.tour_group {

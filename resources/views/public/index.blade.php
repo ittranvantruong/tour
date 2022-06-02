@@ -14,70 +14,52 @@
 
     <main>
         <!-------------------- Slide Banner ---------------------->
-        <div class="row">
-            <div class="col col-12">
-                <div class="image-wrapper">
-                    <div class="skitter skitter-large with-dots">
-                        <ul>
-                            <li>
-                                <img src="{{ asset('public/images/slideshow_1.webp') }}" class="cut"
-                                    width="100%" />
-                                <div class="label_text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        <a href="#see-more" class="btn btn-xs btn-warning">See more</a>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{{ asset('public/images/slideshow_2.webp') }}" class="cut"
-                                    width="100%" />
-                                <div class="label_text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        <a href="#see-more" class="btn btn-xs btn-warning">See more</a>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{{ asset('public/images/slideshow_3.webp') }}" class="cut"
-                                    width="100%" />
-                                <div class="label_text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        <a href="#see-more" class="btn btn-xs btn-warning">See more</a>
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="image-wrapper">
+                        <div class="skitter skitter-large with-dots">
+                            <ul>
+                                <li>
+                                    <img src="{{ asset('public/images/slideshow_1.webp') }}" class="cut"
+                                        width="100%" />
+                                    <div class="label_text">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            <a href="#see-more" class="btn btn-xs btn-warning">See more</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="{{ asset('public/images/slideshow_2.webp') }}" class="cut"
+                                        width="100%" />
+                                    <div class="label_text">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            <a href="#see-more" class="btn btn-xs btn-warning">See more</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="{{ asset('public/images/slideshow_3.webp') }}" class="cut"
+                                        width="100%" />
+                                    <div class="label_text">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            <a href="#see-more" class="btn btn-xs btn-warning">See more</a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+    
                 </div>
-
-
-
-                {{-- <div id="demo" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ asset('public/uploads/images/banner2.jpeg') }}" width="100%" height="550px">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('public/uploads/images/banner.jpeg') }}" width="100%" height="550px">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('public/uploads/images/banner2.jpeg') }}" width="100%" height="550px">
-                        </div>
-                    </div>
-
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-
-                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div> --}}
+    
+                 
             </div>
         </div>
+        
         <!-------------------- End Slide Banner ---------------------->
 
         @include('public.search', ['group' => $group])
@@ -100,7 +82,7 @@
         <!-- main nav tabs 1 -->
         <section class="container pb-5 pt-5" id="main_desktop">
             <div class="row">
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-12">
                     <!-- Tab content number 1 -->
                     <div class="pb-3 home-nav-tab" id="tab_content_1">
                         <div class="row">
@@ -223,7 +205,7 @@
                 </div>
   
 
-                @include('public.sidebar')
+                {{-- @include('public.sidebar') --}}
             </div>
         </section>
   

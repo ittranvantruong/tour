@@ -24,7 +24,10 @@
     <!-- List CSS Link-->
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/css/header2.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
     <link href="{{ asset('public/css/footer.css') }}" rel="stylesheet" type="text/css">
     @stack('css')
     <!-- End list CSS Link-->

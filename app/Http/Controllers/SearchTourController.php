@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
+use DB;
 use App\Models\Tour;
 use App\Models\Place;
+use App\Models\Setting;
 use App\Traits\SortTour;
-use DB;
+use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Illuminate\Support\Facades\Cache;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
-use Artesaos\SEOTools\Facades\JsonLd;
 
 class SearchTourController extends Controller
 {
@@ -24,7 +25,10 @@ class SearchTourController extends Controller
         $title = $this->title;
 
         $keyword = $request->keyword;
-
+        $setting = Setting::select('key', 'plain_value')
+        ->where('key', 'site_hotline')
+        ->orWhere('key', 'site_zalo')
+        ->pluck('plain_value', 'key');
         SEOMeta::setDescription(config('custom.seo.description'));
         SEOMeta::addKeyword(config('custom.seo.keyword'));
         OpenGraph::setDescription(config('custom.seo.description'));
@@ -73,7 +77,7 @@ class SearchTourController extends Controller
         // sắp xếp
         $tours = $this->sortQuery($request->sort, $tours)->paginate(12);
 
-        return view('public.tour.index', compact('title', 'tours'));
+        return view('public.tour.index', compact('title', 'tours', 'setting'));
 
     }
 
