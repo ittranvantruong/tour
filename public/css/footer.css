@@ -1,7 +1,7 @@
-footer p, footer a, footer span, footer div {
+/*footer p, footer a, footer span, footer div {
     color: white;
     font-size: 14px;
-}
+}*/
 
 footer a:hover{
     color: #d3d3d3;
@@ -219,4 +219,144 @@ footer a:hover{
     bottom: 50px;
     cursor: pointer;
     border-radius: 2px;
+}
+
+
+footer {
+    background: #f5f5f5;
+    padding-top: 25px;
+}
+
+.col-footer {
+    float: left;
+    width: 25%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#top_footer .col-footer {
+    float: left;
+    width: 33.3333%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#top_footer  {
+    border-bottom: 1px solid #d5d5d5;
+    margin-bottom: 20px;
+}
+
+.footer-title {
+    margin: 0;
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #c60b1e;
+}
+
+ul.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.footer-menu li {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+ul.footer-menu li a {
+    color: #5d5d5d;
+    text-decoration: none;
+}
+
+ul.footer-menu li a:hover {
+    color: #000;
+}
+
+.footer-info {
+    font-size: 14px;
+}
+
+.footer-info span:before {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    background: url(https://hoctienghan.com/styles/website/images/icon.png) no-repeat 0 -32px;
+}
+
+.row .footer-info:nth-child(2) span:before {
+    background-position: -50px -32px;
+}
+
+.row .footer-info:nth-child(3) span:before {
+    background-position: -25px -32px;
+}
+
+.row .footer-info:nth-child(4) span:before {
+    background-position: -75px -32px;
+}
+
+.footer-info span a {
+    color: #5b5c5c;
+}
+
+.footer-info a {
+    text-decoration: none;
+    color: #000;
+}
+
+.copyright {
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.copyright a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    color: #5d5d5d;
+}
+
+@media (max-width: 768px) {
+    #top_footer {
+        display: none;
+    }
+
+    .footer-info span:before {
+        float: left;
+        margin-right: 10px;
+        margin-top: -3px;
+    }
+
+    .col-footer {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+    }
+    
+    .copyright {
+        font-size: 13px;
+    }
+
+    .copyright .chinhsach {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    footer .container {
+        width: 1170px;
+    }
+
 }
